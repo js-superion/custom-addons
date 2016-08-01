@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="action_mqc_blood">
+            <field name="name">用血质控指标</field>
+            <field name="res_model">mqc.blood</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- 图书表单视图 -->
+        <record id="view_blood_form" model="ir.ui.view">
+            <field name="name">mqc.blood.form</field>
+            <field name="model">mqc.blood</field>
+            <field name="arch" type="xml">
+                <form>
+                     <header>
+                        <printbutton string="打印" type="object" name="print" class="oe_highlight" />
+                        <printdesignbutton string="打印设计" model="mqc.blood" type="object" name="printdesign" class="oe_highlight" />
+
+                    </header>
+                    <sheet>
+                        <script>
+                        </script>
+
+                        <div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- 表格视图 -->
+        <record id="view_mqc_blood_tree" model="ir.ui.view">
+            <field name="name">mqc.blood.tree</field>
+            <field name="model">mqc.blood</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="report_month"/>
+                    <field name="use_blood_case" sum="共:"/>
+                    <field name="out_case" sum="共:"/>
+                    <field name="opr_num" sum="共:"/>
+                    <field name="whole_blood" sum="共:"/>
+                    <field name="rbc" sum="共:"/>
+                    <field name="plasma" sum="共:"/>
+                    <field name="platelet" sum="共:"/>
+                    <field name="cryoprecipitate" sum="共:"/>
+                </tree>
+
+            </field>
+
+        </record>
+
+        <!-- 查询视图-->
+        <record id="view_mqc_blood_search" model="ir.ui.view">
+
+            <field name="name">mqc.blood.search</field>
+            <field name="model">mqc.blood</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="use_blood_case"/>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
