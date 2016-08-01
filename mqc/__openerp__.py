@@ -26,12 +26,13 @@
     'data': [
         # 'security/ir.model.access.csv',
         # 'security/emerg_security.xml',
+        'report/mqc_emrg_report_view.xml',
         'views/mqc_emerg.xml',
         'views/mqc_blood.xml',
         'views/mqc_cfg.xml',
         'views/mqc_menuitem.xml',
         'views/blood_form_view.xml',
-        'report/mqc_emrg_report_view.xml',
+
 
     ],
     # only loaded in demonstration mode
