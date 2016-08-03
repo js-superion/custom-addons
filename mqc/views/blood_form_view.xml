@@ -6,7 +6,7 @@
             <field name="model">mqc.blood</field>
             <field name="inherit_id" ref="mqc.view_blood_form"/>
             <field name="arch" type="xml">
-                    <xpath expr="//div" position="after">
+                    <xpath expr="//div" position="inside">
                          <table border="1" cellspacing="0" cellpadding="0">
                 <tbody>
                     <tr>

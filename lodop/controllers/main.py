@@ -8,7 +8,7 @@ class PrintController(http.Controller):
     def print_template_get(self, **post):
         model = post.get('model', '')
         model_id = request.registry['ir.model'].search_read(request.cr, SUPERUSER_ID,
-            domain=[('name', '=', model)],
+            domain=[('model', '=', model)],
             fields=['id'],
             limit=1,
         )
@@ -39,7 +39,7 @@ class PrintController(http.Controller):
     def print_get(self, **post):
         model = post.get('model', '')
         model_id = request.registry['ir.model'].search_read(request.cr, SUPERUSER_ID,
-            domain=[('name', '=', model)],
+            domain=[('model', '=', model)],
             fields=['id'],
             limit=1,
         )

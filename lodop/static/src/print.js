@@ -43,7 +43,6 @@ odoo.define('lodop.print', function(require){
             eval(printMdl);
         }
 
-        alert(1);
         if (LODOP.CVERSION && !LODOP.On_Return) {
             LODOP.On_Return = function (TaskID, Value) {
                 if (Value != "" && Value!="NoResult") {
@@ -57,23 +56,37 @@ odoo.define('lodop.print', function(require){
 
 
     var PrintButton = form_widgets.WidgetButton.extend({
+        init:function(parent, options){
+            this._super.apply(this,arguments),
+            this.htmlfrom = "client"
+        },
         on_click: function() {
             var LODOP = lodop();
             var model=this.view.model;
             var key = '';
-            if(this.node.attrs.model) model=this.node.attrs.model;
-            if(this.node.attrs.key) key=this.node.attrs.key;
-            alert(key)
-            if (printMdl == undefined) {
+            var htmlfrom = '';
+            var html='';
+            if(this.node.attrs.htmlfrom) htmlfrom = this.node.attrs.htmlfrom;
+            if(htmlfrom=='' || htmlfrom=='client'){
+                 html = $("#blood_form").html();
+                var width = $("#blood_form").width();
+                var height = $("#blood_form").height();
+                 LODOP.ADD_PRINT_TABLE(88,40,width,height,html);
+            }else{
+                if(this.node.attrs.model) model=this.node.attrs.model;
+                if(this.node.attrs.key) key=this.node.attrs.key;
                 printgetmdl(model, key, function (data) {
-                    printMdl = data;
-                    eval(printMdl);
-                    LODOP.PREVIEW();
+                    if(!data){
+                        html = $("#blood_form").html();
+                        LODOP.ADD_PRINT_HTM(88,40,321,185,html);
+                    }else{
+                         printMdl = data;
+                        eval(printMdl);
+                    }
                 });
-            } else {
-                eval(printMdl);
-                LODOP.PREVIEW();
             }
+             //execute html tab or js script
+            LODOP.PREVIEW();
         }
     });
 
@@ -86,14 +99,13 @@ odoo.define('lodop.print', function(require){
             var key='';
             if(this.node.attrs.model) model=this.node.attrs.model;
             if(this.node.attrs.key) key=this.node.attrs.key;
-            alert(key)
-            if(printMdl==undefined){
+            // if(printMdl==undefined){
                 printgetmdl(model,key,function(data,model,key){
                     lodopDesign(data,model,key);
                 })
-            }else{
-                lodopDesign(printMdl,this.view.model,key);
-            }
+            // }else{
+            //     lodopDesign(printMdl,this.view.model,key);
+            // }
         }
     })
 
