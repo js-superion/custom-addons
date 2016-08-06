@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data noupdate="0">
-        <record id="group_mqc_merg" model="res.groups">
-            <field name="name">急诊组</field>
-            <field name="category_id" ref="base.module_category"/>
-            <field name="implied_ids" eval="[(4,res('base.group_user))]"/>
+        <!-- 这里定义的module_category_mqc，本意是想让groups引用，实际上groups引用的base.module_category_qmc已经存在数据库中
+            在模块安装时就存在了，所以这里定义与否，也无所谓-->
+         <!--<record id="module_category_mqc" model="ir.module.category">-->
+            <!--<field name="name">质控管理</field>-->
+            <!--<field name="description">xxxxxxxxxx</field>-->
+            <!--<field name="sequence">15</field>-->
+        <!--</record>-->
+
+         <!-- 定义急诊上报对应的两个组-->
+        <record id="group_mqc_merg_user" model="res.groups">
+            <field name="name">急诊组1</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
         </record>
 
         <record id="group_mqc_merg_admin" model="res.groups">
-            <field name="name">急诊组管理员</field>
-            <field name="category_id" ref="base.module_category"/>
-            <field name="implied_ids" eval="[(4, ref('group_mqc_merg'))]"/>
+            <field name="name">急诊管理组1</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4, ref('group_mqc_merg_user'))]"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
+
+
+        <!-- 定义输血上报对应的两个组-->
+         <record id="group_mqc_blood_user" model="res.groups">
+            <field name="name">输血组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_mqc_blood_admin" model="res.groups">
+            <field name="name">输血管理组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4, ref('group_mqc_blood_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+
+         <!-- 定义维护医院对照对应的两个组-->
+         <record id="group_mqc_hospital_user" model="res.groups">
+            <field name="name">hos组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_mqc_hospital_admin" model="res.groups">
+            <field name="name">hos管理组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4, ref('group_mqc_hospital_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+
+          <!-- 定义维护用户对照对应的两个组-->
+        <record id="group_mqc_user_user" model="res.groups">
+            <field name="name">user组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_mqc_user_admin" model="res.groups">
+            <field name="name">user管理组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4, ref('group_mqc_user_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
     </data>
 
 </odoo>

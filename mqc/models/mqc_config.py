@@ -3,6 +3,18 @@ from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 
 
+class ResPartner(models.Model):
+    _inherits = {'res.partner':'partner_id'}
+    #关联到res_partner，级联删除
+    partner_id = fields.Many2one(
+        'res.partner',
+        u'医院名称',
+        ondelete ='cascade')
+    hospital_code = fields.Char(
+        u'平台编码',
+        require=True,
+    )
+
 class ConfigHospital(models.Model):
     _name = "mqc.hospital"
     _inherits = {'res.partner':'partner_id'}

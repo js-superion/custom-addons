@@ -20,12 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','base_setup'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        # 'security/emerg_security.xml',
+        'security/emerg_security.xml',
+        'security/ir.model.access.csv',
         'report/mqc_emrg_report_view.xml',
         'views/mqc_emerg.xml',
         'views/mqc_blood.xml',
