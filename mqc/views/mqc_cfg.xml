@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="view_mqc_company_form_ext" model="ir.ui.view">
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="units_code" placeholder="本单位的编码,如3207XXX"/>
+                </field>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="action_mqc_hospital">
             <field name="name">医院编码对照</field>
             <field name="res_model">mqc.hospital</field>
@@ -22,7 +32,7 @@
             </field>
         </record>
 
-           <!-- 医院表格视图 -->
+        <!-- 医院表格视图 -->
         <record id="view_mqc_hospital_tree" model="ir.ui.view">
             <field name="name">mqc.hospital.tree</field>
             <field name="model">mqc.hospital</field>
@@ -36,7 +46,7 @@
 
         </record>
 
-                        <!--用户对照维护 -->
+        <!--用户对照维护 -->
         <record model="ir.actions.act_window" id="action_mqc_user">
             <field name="name">用户编码对照</field>
             <field name="res_model">mqc.user</field>
@@ -57,13 +67,13 @@
             </field>
         </record>
 
-            <!-- 用户表格视图 -->
+        <!-- 用户表格视图 -->
         <record id="view_mqc_user_tree" model="ir.ui.view">
             <field name="name">mqc.user.tree</field>
             <field name="model">mqc.user</field>
             <field name="arch" type="xml">
                 <tree>
-                     <field name="user_id"></field>
+                    <field name="user_id"></field>
                     <field name="user_code"></field>
                 </tree>
 

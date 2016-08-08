@@ -3,13 +3,13 @@
     <data noupdate="0">
         <!-- 这里定义的module_category_mqc，本意是想让groups引用，实际上groups引用的base.module_category_qmc已经存在数据库中
             在模块安装时就存在了，所以这里定义与否，也无所谓-->
-         <!--<record id="module_category_mqc" model="ir.module.category">-->
-            <!--<field name="name">质控管理</field>-->
-            <!--<field name="description">xxxxxxxxxx</field>-->
-            <!--<field name="sequence">15</field>-->
+        <!--<record id="module_category_mqc" model="ir.module.category">-->
+        <!--<field name="name">质控管理</field>-->
+        <!--<field name="description">xxxxxxxxxx</field>-->
+        <!--<field name="sequence">15</field>-->
         <!--</record>-->
 
-         <!-- 定义急诊上报对应的两个组-->
+        <!-- 定义急诊上报对应的两个组-->
         <record id="group_mqc_merg_user" model="res.groups">
             <field name="name">急诊组1</field>
             <field name="category_id" ref="base.module_category_mqc"/>
@@ -25,7 +25,7 @@
 
 
         <!-- 定义输血上报对应的两个组-->
-         <record id="group_mqc_blood_user" model="res.groups">
+        <record id="group_mqc_blood_user" model="res.groups">
             <field name="name">输血组</field>
             <field name="category_id" ref="base.module_category_mqc"/>
             <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
@@ -39,8 +39,8 @@
         </record>
 
 
-         <!-- 定义维护医院对照对应的两个组-->
-         <record id="group_mqc_hospital_user" model="res.groups">
+        <!-- 定义维护医院对照对应的两个组-->
+        <record id="group_mqc_hospital_user" model="res.groups">
             <field name="name">hos组</field>
             <field name="category_id" ref="base.module_category_mqc"/>
             <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
@@ -54,7 +54,7 @@
         </record>
 
 
-          <!-- 定义维护用户对照对应的两个组-->
+        <!-- 定义维护用户对照对应的两个组-->
         <record id="group_mqc_user_user" model="res.groups">
             <field name="name">user组</field>
             <field name="category_id" ref="base.module_category_mqc"/>
@@ -68,6 +68,17 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
+    </data>
+
+
+    <data noupdate="1">
+        <record id="rule_mqc_emerg" model="ir.rule">
+            <field name="name">规则:查看自己的数据</field>
+            <field name="model_id" ref="model_mqc_emergency"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
     </data>
 
 </odoo>

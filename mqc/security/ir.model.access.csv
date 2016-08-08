@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mqc_emerg_user,name_mqc_emergency_user,model_mqc_emergency,group_mqc_merg_user,1,0,0,0
-access_mqc_emerg_admin,name_mqc_emergency_admin,model_mqc_emergency,group_mqc_merg_admin,1,1,0,0
+access_mqc_emerg_user,name_mqc_emergency_user,model_mqc_emergency,group_mqc_merg_user,1,1,1,0
+access_mqc_emerg_admin,name_mqc_emergency_admin,model_mqc_emergency,group_mqc_merg_admin,1,1,1,1
 
 
 
