@@ -9,7 +9,8 @@
             <!-- 二级子菜单 -->
             <menuitem id="menu_act_mqc_emrg" name="急诊" string="急诊质控数据" parent="menu_mqc_form" action="action_mqc_emrg" groups="group_mqc_merg_user" />
             <menuitem id="menu_act_mqc_pathology" name="病理" string="病理质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
-            <menuitem id="menu_act_mqc_icu" name="ICU"  string="ICU质控数据"  parent="menu_mqc_form" action="action_mqc_emrg"/>
+            <menuitem id="menu_act_mqc_infect" name="院感" string="院感质控数据" parent="menu_mqc_form" action="action_mqc_infect" groups="group_mqc_infect_user"/>
+            <menuitem id="menu_act_mqc_icu" name="ICU"  string="ICU质控数据"  parent="menu_mqc_form" action="action_mqc_icu" groups="group_mqc_icu_user"/>
             <menuitem id="menu_act_mqc_nursing" name="护理" string="护理质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
             <menuitem id="menu_act_mqc_mouth" name="口腔" string="口腔质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
             <menuitem id="menu_act_mqc_anesthesiology" name="麻醉" string="麻醉质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>

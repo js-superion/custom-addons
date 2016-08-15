@@ -39,6 +39,7 @@
         </record>
 
 
+
         <!-- 定义维护医院对照对应的两个组-->
         <record id="group_mqc_hospital_user" model="res.groups">
             <field name="name">hos组</field>
@@ -68,7 +69,20 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
+
+        <record id="group_mqc_icu_user" model="res.groups">
+            <field name="name">icu用户组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+        <record id="group_mqc_infect_user" model="res.groups">
+            <field name="name">感染用户组</field>
+            <field name="category_id" ref="base.module_category_mqc"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
     </data>
+
 
 
     <data noupdate="1">

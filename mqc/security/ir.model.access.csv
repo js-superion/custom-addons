@@ -17,6 +17,20 @@ access_mqc_blood_cons_det_user,name_mqc_blood_cons_det_user,model_mqc_blood_cons
 access_mqc_blood_tech_user,name_mqc_blood_tech_user,model_mqc_blood_tech,group_mqc_blood_user,1,1,1,0
 access_mqc_blood_clinic_user,name_mqc_blood_clinic_user,model_mqc_blood_clinic,group_mqc_blood_user,1,1,1,0
 
+
+access_mqc_blood_qlty_user,name_mqc_blood_qlty_user,model_mqc_blood_qlty,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_qlty_detail_user,name_mqc_blood_qlty_detail_user,model_mqc_blood_qlty_detail,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_manage_user,name_mqc_blood_manage_user,model_mqc_blood_manage,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_manage_detail_user,name_mqc_blood_manage_detail_user,model_mqc_blood_manage_detail,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_advise_user,name_mqc_blood_advise_user,model_mqc_blood_advise,group_mqc_blood_user,1,1,1,0
+
+access_mqc_blood_comp_user,name_mqc_blood_comp_user,model_mqc_blood_component,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_quota_user,name_mqc_blood_quota_user,model_mqc_blood_quota,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_react_user,name_mqc_blood_react_user,model_mqc_blood_react,group_mqc_blood_user,1,1,1,0
+access_mqc_blood_manage_react_user,name_mqc_blood_manage_react_user,model_mqc_blood_manage_react,group_mqc_blood_user,1,1,1,0
+
+
+
 access_mqc_hospital_user,name_mqc_hospital_user,model_mqc_hospital,group_mqc_hospital_user,1,0,0,0
 access_mqc_hospital_admin,name_mqc_hospital_admin,model_mqc_hospital,group_mqc_hospital_admin,1,1,0,0
 
@@ -24,5 +38,27 @@ access_mqc_hospital_admin,name_mqc_hospital_admin,model_mqc_hospital,group_mqc_h
 
 access_mqc_user_user,name_mqc_user_user,model_mqc_user,group_mqc_user_user,1,0,0,0
 access_mqc_user_admin,name_mqc_user_admin,model_mqc_user,group_mqc_user_admin,1,1,1,0
+
+
+access_mqc_icu_user,name_mqc_icu_user,model_mqc_icu,group_mqc_icu_user,1,1,1,0
+
+access_mqc_icu_user,name_mqc_infect_user,model_mqc_infect,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_part_user,name_mqc_infect_part,model_mqc_infect_part,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_device_user,name_mqc_infect_device,model_mqc_infect_device,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_bacteria,name_mqc_infect_bacteria,model_mqc_infect_bacteria,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_parts_user,name_mqc_infect_parts,model_mqc_infect_parts,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_hand_user,name_mqc_infect_hand,model_mqc_infect_hand,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_env_user,name_mqc_infect_env,model_mqc_infect_env,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_sample_user,name_mqc_infect_sample,model_mqc_infect_sample,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_icu_user,name_mqc_infect_icu,model_mqc_infect_icu,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_devices_user,name_mqc_infect_devices,model_mqc_infect_devices,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_ssi_user,name_mqc_infect_ssi,model_mqc_infect_ssi,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_rbm_user,name_mqc_infect_rbm,model_mqc_infect_rbm,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_ill_user,name_mqc_infect_ill,model_mqc_infect_ill,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_break_user,name_mqc_infect_break,model_mqc_infect_break,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_edu_user,name_mqc_infect_edu,model_mqc_infect_edu,group_mqc_infect_user,1,1,1,0
+
+
+
 
 ,,,,,,,

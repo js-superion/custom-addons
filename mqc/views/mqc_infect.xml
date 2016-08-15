@@ -1,30 +1,36 @@
 <odoo>
     <data>
 
-        <record model="ir.actions.act_window" id="action_mqc_blood">
-            <field name="name">用血质控指标</field>
-            <field name="res_model">mqc.blood</field>
+        <record model="ir.actions.act_window" id="action_mqc_infect">
+            <field name="name">院感质控指标</field>
+            <field name="res_model">mqc.infect</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
 
         <!-- 主界面的列表 -->
-        <record id="view_blood_form" model="ir.ui.view">
-            <field name="name">mqc.blood.form</field>
-            <field name="model">mqc.blood</field>
+        <record id="view_infect_form" model="ir.ui.view">
+            <field name="name">mqc.infect.form</field>
+            <field name="model">mqc.infect</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <notebook colspan="1">
-                            <page string="输血科建设及检测技术月质控报表">
+                            <page string="医院感染发生情况">
                                 <group>
-                                    <!--<field name="mqc_id" class="oe_inline"/>-->
-                                    <field name="report_clinic" class="oe_inline"/>
-                                    <field name="report_construct" class="oe_inline"/>
-                                    <field name="report_qlty" class="oe_inline"/>
-                                    <field name="report_manager" class="oe_inline"/>
-                                    <field name="report_advise" class="oe_inline"/>
+                                    <field name="out_case" class="oe_inline"/>
+                                    <field name="infect_pat" class="oe_inline"/>
+                                    <field name="infect_rate" class="oe_inline"/>
+                                    <field name="infect_cases" class="oe_inline"/>
+                                    <field name="infect_cases_rate" class="oe_inline"/>
+                                    <field name="part_ids" class="oe_inline"/>
+                                    <field name="hand_ids" class="oe_inline"/>
+                                    <field name="env_ids" class="oe_inline"/>
+                                    <field name="infect_icu_id" class="oe_inline"/>
+                                    <field name="devices_ids" class="oe_inline"/>
+                                    <field name="ssi_ids" class="oe_inline"/>
+                                    <field name="rbm_ids" class="oe_inline"/>
                                 </group>
                             </page>
                         </notebook>
@@ -33,55 +39,20 @@
             </field>
         </record>
 
-        <!-- 全院临床用血 -->
-        <record id="view_blood_clinic_form" model="ir.ui.view">
-            <field name="name">mqc.blood.clinic.form</field>
-            <field name="model">mqc.blood.clinic</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <notebook colspan="1">
-                            <page string="全院临床用血">
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
         <!-- 输血科建设及检测技术 -->
-        <record id="view_blood_construct_form" model="ir.ui.view">
-            <field name="name">mqc.blood.construct.form</field>
-            <field name="model">mqc.blood.construct</field>
+        <record id="view_infect_icu_form" model="ir.ui.view">
+            <field name="name">mqc.infect.icu.form</field>
+            <field name="model">mqc.infect.icu</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <notebook colspan="2">
-                            <page string="输血科建设及检测技术">
+                            <page string="ICU医院感染发生情况">
                                 <group>
                                     <field name="create_type" class="oe_inline"/>
                                     <field name="dept_emp_num" class="oe_inline"/>
                                     <field name="required_device" class="oe_inline"/>
                                     <field name="shortage_device" class="oe_inline"/>
-                                    <field name="detail_ids" class="oe_inline">
-                                        <tree string="检测技术填写" editable="bottom">
-                                            <field name="tech_id"/>
-                                            <field name="opr_method"/>
-                                            <field name="cases"/>
-                                            <field name="indoor_qc_freq"/>
-                                            <field name="province_eqa"/>
-                                            <field name="country_eqa"/>
-                                        </tree>
-                                        <form string="检测技术填写">
-                                            <group>
-                                                <field name="opr_method"/>
-                                                <field name="cases"/>
-                                                <field name="indoor_qc_freq"/>
-                                                <field name="province_eqa"/>
-                                                <field name="country_eqa"/>
-                                            </group>
-                                        </form>
-                                    </field>
                                 </group>
                             </page>
                         </notebook>
