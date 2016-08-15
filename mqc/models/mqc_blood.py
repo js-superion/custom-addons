@@ -3,8 +3,8 @@
 from openerp import models, fields, api
 
 class Blood(models.Model):
-    _name = "mqc.blood"
-    _description = u'用血质控指标'
+    _name = "mqc.blood.clinic"
+    _description = u'全院临床用血情况'
 
     report_month = fields.Char(
         u'上报月份',
@@ -95,4 +95,63 @@ class Blood(models.Model):
     avg_usage= fields.Integer(
         u'住（出）院患者人均用血量',
     )
+
+class BloodTech(models.Model):
+    _name = "mqc.blood"
+    _description = u"输血填报"
+    _inherits = {'mqc.mqc': 'mqc_id'}
+    # _inherit = 'mqc.mqc'
+    mqc_id = fields.Many2one('mqc.mqc', u'报表id', required=True,
+                              ondelete='cascade')
+    report_construct = fields.Many2one('mqc.blood.construct', u'输血科建设及检测技术')
+    report_clinic = fields.Many2one('mqc.blood.clinic', u'全院临床用血情况')
+
+
+
+class BloodTech(models.Model):
+    _name = "mqc.blood.tech"
+    _description = u"输血科检测技术"
+    name = fields.Char(u'技术名称',)
+    tech_method = fields.Char(u'操作方法',)
+
+
+class BloodConstructDetail(models.Model):
+    _name = "mqc.blood.construct.detail"
+    _description = u"输血科建设及检测技术明细"
+    tech_id = fields.Many2one('mqc.blood.tech',u'输血科检测技术',required=True, )
+    construct_id = fields.Many2one('mqc.blood.construct',u'主记录',required=True, )
+    #关联技术字典
+    tech_name = fields.Char(
+        u'技术名称',
+        related='tech_id.name',
+        readonly=False, store=True,
+    )
+    opr_method = fields.Char(
+        u'操作方法',
+        related='tech_id.tech_method',
+        readonly=False, store=True,
+    )
+
+    cases = fields.Integer(u'例数', )
+    indoor_qc_freq = fields.Integer(u'室内质控频率', )
+    province_eqa = fields.Char(u'省室间质评结果', ) #eqa = external quality assessment
+    country_eqa = fields.Char(u'国室间质评结果', )
+
+class BloodConstruct(models.Model):
+    _name = "mqc.blood.construct"
+    _description = u'输血科建设及检测技术'
+    # _inherits = {'mqc.mqc': 'mqc_id'}
+    # mqc_id = fields.Many2one('mqc.mqc', '报表id', required=True,
+    #                           ondelete='cascade')
+    report_month = fields.Char( u'上报月份',)
+    units_name = fields.Char( u'单位名称',)
+    units_code = fields.Char(u'单位编码',)
+    create_type = fields.Selection([('01', u'独立建制'),('02', u'未设独立建制'),],
+                                   u'输血科或血库建制')
+    dept_emp_num = fields.Integer(u'科室人数',)
+    bed_num = fields.Integer( u'医院床位数',)
+    required_device  = fields.Selection([('01', u'齐全'),('02', u'不齐全'),],u'科室必需设备',)
+    shortage_device = fields.Char(u'缺少的设备名称',)
+    detail_ids = fields.One2many('mqc.blood.construct.detail', 'construct_id', u'技术明细')
+
 

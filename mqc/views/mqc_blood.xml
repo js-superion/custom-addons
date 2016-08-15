@@ -9,20 +9,77 @@
         </record>
 
 
-        <!-- 图书表单视图 -->
+        <!-- 输血表单视图 -->
         <record id="view_blood_form" model="ir.ui.view">
             <field name="name">mqc.blood.form</field>
             <field name="model">mqc.blood</field>
             <field name="arch" type="xml">
                 <form>
-                     <header>
-                        <printbutton htmlfrom="client"  string="打印" type="object" name="print" model="mqc.blood" class="oe_highlight" />
-                        <printdesignbutton string="打印设计" model="mqc.blood" type="object" name="printdesign" class="oe_highlight" />
-
-                    </header>
                     <sheet>
-                        <div id="blood_form">
-                        </div>
+                        <notebook colspan="1">
+                            <page string="输血科建设及检测技术月质控报表">
+                                    <group>
+                                            <field name="mqc_id" class="oe_inline"/>
+                                            <field name="report_construct" class="oe_inline"/>
+                                            <field name="report_clinic" class="oe_inline"/>
+                                    </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_blood_clinic_form" model="ir.ui.view">
+            <field name="name">mqc.blood.clinic.form</field>
+            <field name="model">mqc.blood.clinic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook colspan="1">
+                            <page string="全院临床用血">
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_blood_construct_form" model="ir.ui.view">
+            <field name="name">mqc.blood.construct.form</field>
+            <field name="model">mqc.blood.construct</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook colspan="2">
+                            <page string="输血科建设及检测技术">
+                                <group>
+                                    <field name="create_type" class="oe_inline"/>
+                                    <field name="dept_emp_num" class="oe_inline"/>
+                                    <field name="required_device" class="oe_inline"/>
+                                    <field name="shortage_device" class="oe_inline"/>
+                                    <field name="detail_ids" class="oe_inline">
+                                        <tree string="检测技术填写" editable="bottom">
+                                            <field name="tech_id"/>
+                                            <field name="opr_method"/>
+                                            <field name="cases"/>
+                                            <field name="indoor_qc_freq"/>
+                                            <field name="province_eqa"/>
+                                            <field name="country_eqa"/>
+                                        </tree>
+                                        <form string="检测技术填写">
+                                            <group>
+                                                <field name="opr_method"/>
+                                                <field name="cases"/>
+                                                <field name="indoor_qc_freq"/>
+                                                <field name="province_eqa"/>
+                                                <field name="country_eqa"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -34,15 +91,7 @@
             <field name="model">mqc.blood</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="report_month"/>
-                    <field name="use_blood_case" sum="共:"/>
-                    <field name="out_case" sum="共:"/>
-                    <field name="opr_num" sum="共:"/>
-                    <field name="whole_blood" sum="共:"/>
-                    <field name="rbc" sum="共:"/>
-                    <field name="plasma" sum="共:"/>
-                    <field name="platelet" sum="共:"/>
-                    <field name="cryoprecipitate" sum="共:"/>
+                    <field name="mqc_id"/>
                 </tree>
 
             </field>
@@ -52,11 +101,11 @@
         <!-- 查询视图-->
         <record id="view_mqc_blood_search" model="ir.ui.view">
 
-            <field name="name">mqc.blood.search</field>
+            <field name="name">mqc.mqc.search</field>
             <field name="model">mqc.blood</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="use_blood_case"/>
+                    <field name="create_date"/>
                 </search>
             </field>
         </record>

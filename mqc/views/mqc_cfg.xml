@@ -62,6 +62,8 @@
                     <group>
                         <field name="user_id"></field>
                         <field name="user_code"></field>
+                        <field name="user_phone"></field>
+                        <field name="user_fax"></field>
                     </group>
                 </form>
             </field>
@@ -75,6 +77,8 @@
                 <tree>
                     <field name="user_id"></field>
                     <field name="user_code"></field>
+                    <field name="user_phone"></field>
+                    <field name="user_fax"></field>
                 </tree>
 
             </field>

@@ -8,13 +8,29 @@ class ResPartnerExt(models.Model):
      units_code = fields.Char(u'单位编码', )
 
 
+class Mqc(models.Model):
+    _name = 'mqc.mqc'
+    _description = u"医疗质控单位填报"
+    company_id = fields.Many2one(
+        'res.company',)
+    units_code = fields.Char(u'单位编码')
+    units_name = fields.Char(u'单位名称')
+    dept_name = fields.Char(u'上报科室')
+    report_date = fields.Char(u'上报月份')
+    # report_1 = fields.Many2one('mqc.blood.clinic',u'关联全院临床用血情况')
+    # report_2 = fields.Many2one('mqc.blood.construct', u'关联输血科建设及检测技术')
+
+
+
+
+
 class ConfigHospital(models.Model):
     _name = "mqc.hospital"
     _inherits = {'res.partner':'partner_id'}
     #关联到res_partner，级联删除
     partner_id = fields.Many2one(
         'res.partner',
-        u'医院名称',
+        u'医院名称',required=True,
         ondelete ='cascade')
     hospital_code = fields.Char(
         u'平台编码',
@@ -46,12 +62,23 @@ class ConfigUser(models.Model):
     #关联到res_partner，级联删除
     user_id = fields.Many2one(
         'res.partner',
-        u'用户名称的',
+        u'用户名称的',required=True,
         ondelete ='cascade')
     user_code = fields.Char(
         u'平台编码',
         require=True,
     )
+    user_phone= fields.Char(
+        u'电话',
+        related='user_id.phone',
+        readonly=True,store=True,
+    )
+    user_fax = fields.Char(
+        u'传真',
+        related='user_id.fax',
+        readonly=True, store=False,
+    )
+
 
     @api.one
     @api.constrains('user_id')
