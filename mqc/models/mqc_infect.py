@@ -17,11 +17,11 @@ class Infect(models.Model):
     part_ids = fields.One2many('mqc.infect.parts', 'infect_id', u'前五位感染部位')
     hand_ids = fields.One2many('mqc.infect.hand',  'infect_id',u'手卫生监测情况')
     env_ids = fields.One2many('mqc.infect.env',  'infect_id',u'环境卫生学监测情况')
-    infect_icu_id = fields.Many2one('mqc.infect.icu', u'ICU医院感染发生情况')
-    devices_ids = fields.One2many('mqc.infect.device',  'infect_id',u'器械相关感染监测')
-    ssi_id = fields.Many2one('mqc.infect.ssi',  'infect_id',u'手术部位感染监测')
+    devices_ids = fields.One2many('mqc.infect.devices',  'infect_id',u'器械相关感染监测')
     rbm_ids = fields.One2many('mqc.infect.rbm',  'infect_id',u'耐药菌监测')
 
+    infect_icu_id = fields.Many2one('mqc.infect.icu', u'ICU医院感染发生情况')
+    ssi_id = fields.Many2one('mqc.infect.ssi',u'手术部位感染监测')
     ill_id = fields.Many2one('mqc.infect.ill', u'现患率调查')
     break_id = fields.Many2one('mqc.infect.break', u'医院感染暴发情况')
     edu_id = fields.Many2one('mqc.infect.edu', u'继续教育情况')
@@ -131,7 +131,6 @@ class InfectRbm(models.Model):
 class InfectIll(models.Model):
     _name = "mqc.infect.ill" #ill rate 现患率
     _description = u"现患率调查"
-    infect_id = fields.Many2one('mqc.infect', u'感染主记录', required=True, )
 
     std_num = fields.Integer(u'应查人数', )
     fct_num = fields.Integer(u'实查人数')
@@ -144,7 +143,6 @@ class InfectIll(models.Model):
 class InfectBreak(models.Model):
     _name = "mqc.infect.break" #ill rate 现患率
     _description = u"医院感染暴发情况"
-    infect_id = fields.Many2one('mqc.infect', u'感染主记录', required=True, )
 
     std_num = fields.Integer(u'出院人次', )
     fct_num = fields.Integer(u'确认医院感染暴发次数')
@@ -155,7 +153,6 @@ class InfectBreak(models.Model):
 class InfectEdu(models.Model):
     _name = "mqc.infect.edu" #ill rate 现患率
     _description = u"继续教育情况"
-    infect_id = fields.Many2one('mqc.infect', u'感染主记录', required=True, )
 
     country_pro = fields.Integer(u'专职人员(国家)', )
     country_other = fields.Integer(u'其它(国家)')
