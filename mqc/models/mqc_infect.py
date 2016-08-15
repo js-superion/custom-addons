@@ -18,9 +18,13 @@ class Infect(models.Model):
     hand_ids = fields.One2many('mqc.infect.hand',  'infect_id',u'手卫生监测情况')
     env_ids = fields.One2many('mqc.infect.env',  'infect_id',u'环境卫生学监测情况')
     infect_icu_id = fields.Many2one('mqc.infect.icu', u'ICU医院感染发生情况')
-    devices_ids = fields.One2many('mqc.infect.device',  'infect_id',u'环境卫生学监测情况')
-    ssi_ids = fields.One2many('mqc.infect.ssi',  'infect_id',u'环境卫生学监测情况')
-    rbm_ids = fields.One2many('mqc.infect.rbm',  'infect_id',u'环境卫生学监测情况')
+    devices_ids = fields.One2many('mqc.infect.device',  'infect_id',u'器械相关感染监测')
+    ssi_id = fields.Many2one('mqc.infect.ssi',  'infect_id',u'手术部位感染监测')
+    rbm_ids = fields.One2many('mqc.infect.rbm',  'infect_id',u'耐药菌监测')
+
+    ill_id = fields.Many2one('mqc.infect.ill', u'现患率调查')
+    break_id = fields.Many2one('mqc.infect.break', u'医院感染暴发情况')
+    edu_id = fields.Many2one('mqc.infect.edu', u'继续教育情况')
 
 
 #相关字典
@@ -45,7 +49,7 @@ class InfectParts(models.Model):
     _name = "mqc.infect.parts"
     _description = u"感染部位明细"
     infect_id = fields.Many2one('mqc.infect', u'感染主记录', required=True,)
-    part_name = fields.Char(u'部位',)
+    part_id = fields.Many2one('mqc.infect.part', u'部位', required=True,)
     infect_cases = fields.Integer(u'例次数：')
 
 class InfectHand(models.Model):
