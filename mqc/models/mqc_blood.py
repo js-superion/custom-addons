@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-
+from openerp.exceptions import ValidationError
 class BloodClinic(models.Model):
     _name = "mqc.blood.clinic"
     _description = u'全院临床用血情况'
@@ -35,14 +35,16 @@ class BloodClinic(models.Model):
     total_self_usage = fields.Integer( u'自体输血量',)
     total_self_case = fields.Integer( u'自体输血数',)
     component_rate = fields.Integer(  u'成分输血率',)
-    self_rate = fields.Integer( u'自体输血率',)
+    self_rate = fields.Float( u'自体输血率',)
     avg_usage= fields.Integer(u'住（出）院患者人均用血量',)
 
 class Blood(models.Model):
     _name = "mqc.blood"
     _description = u"输血填报"
     _inherits = {'mqc.mqc': 'mqc_id'}
+    _rec_name = 'year_month'
     # _inherit = 'mqc.mqc'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     mqc_id = fields.Many2one('mqc.mqc', u'报表id', required=True,
                               ondelete='cascade')
     report_clinic = fields.Many2one('mqc.blood.clinic', u'全院临床用血情况')
@@ -50,6 +52,15 @@ class Blood(models.Model):
     report_qlty = fields.Many2one('mqc.blood.qlty', u'血液成分质量反馈')
     report_manager = fields.Many2one('mqc.blood.manage', u'输血职能管理')
     report_advise = fields.Many2one('mqc.blood.advise', u'质量安全工作意见')
+
+    @api.constrains('year_month')
+    def _check_year_month(self):
+        domain = [
+            ('create_uid', '=', self.create_uid.id),
+            ('year_month', '=', self.year_month),
+        ]
+        if len(self.search(domain)) > 1:
+            raise ValidationError(u'本月只能上报一次数据')
 
 
 #相关字典
@@ -85,7 +96,7 @@ class BloodConstructDetail(models.Model):
     opr_method = fields.Char( u'操作方法',required=True,)
 
     cases = fields.Integer(u'例数', )
-    indoor_qc_freq = fields.Integer(u'室内质控频率', )
+    indoor_qc_freq = fields.Float(u'室内质控频率', )
     province_eqa = fields.Char(u'省室间质评结果', ) # eqa  = external quality assessment
     country_eqa = fields.Char(u'国室间质评结果', )
 
@@ -148,7 +159,7 @@ class BloodManageDetail(models.Model):
     _description = u"输血管理项目明细"
     quota_id = fields.Many2one('mqc.blood.quota',u'管理项目名称',required=True, )
     manage_id = fields.Many2one('mqc.blood.manage',u'主记录',required=True, ) #关联主记录
-    rate = fields.Char(u'百分率',)
+    rate = fields.Float(u'百分率',)
     remark = fields.Char( u'备注',)
 
 #表5 临床用血质量安全工作意见反馈

@@ -95,10 +95,10 @@
                                         <field name="mass_case" class="oe_inline"/>件
                                     </div>
 
-                                    <label for="report_month"/>
-                                     <div>
-                                        <field name="report_month" class="oe_inline"/>年/月
-                                    </div>
+                                    <!--<label for="report_month"/>-->
+                                     <!--<div>-->
+                                        <!--<field name="report_month" class="oe_inline"/>年/月-->
+                                    <!--</div>-->
 
 
                                 </group>
@@ -165,7 +165,7 @@
             <field name="model">mqc.emergency</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="report_month"/>
+                    <field name="year_month"/>
                     <field name="emerg_case" sum ="共:"/>
                     <field name="critical_case" sum ="共:"/>
                     <field name="emerg_multiple" sum ="共:"/>

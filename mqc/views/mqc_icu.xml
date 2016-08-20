@@ -49,6 +49,7 @@
             <field name="model">mqc.icu</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="year_month" />
                     <field name="treated_rate" />
                     <field name="apache2_excess15" />
                     <field name="joint_rounds" />

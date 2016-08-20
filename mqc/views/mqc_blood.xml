@@ -42,6 +42,9 @@
                     <sheet>
                         <notebook colspan="1">
                             <page string="全院临床用血">
+                                <div>
+
+                                </div>
                             </page>
                         </notebook>
                     </sheet>
@@ -205,6 +208,12 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="mqc_id"/>
+                    <field name="year_month"/>
+                    <field name="report_clinic"/>
+                    <field name="report_construct"/>
+                    <field name="report_qlty"/>
+                    <field name="report_manager"/>
+                    <field name="report_advise"/>
                 </tree>
 
             </field>

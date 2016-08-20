@@ -7,7 +7,7 @@
             <field name="model">mqc.emergency</field>
             <field name="arch" type="xml">
                 <graph string="急诊指标分析(图形)" type="line">
-                    <field name="report_month" type="col"/>
+                    <field name="year_month" type="col"/>
                     <field name="emerg_case" type="measure" operator="+"/>
                     <!--<field name="emerg_multiple" type="measure" operator="+"/>-->
                     <!--<field name="brain_case" type="measure" operator="+"/>-->
@@ -21,7 +21,7 @@
             <field name="model">mqc.emergency</field>
             <field name="arch" type="xml">
                 <pivot string="急诊指标分析(透视图)" disable_linking="True">
-                    <field name="report_month" type="col"/>
+                    <field name="year_month" type="col"/>
                     <field name="emerg_case" type="measure" />
                 </pivot>
             </field>

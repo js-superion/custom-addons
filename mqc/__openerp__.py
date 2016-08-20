@@ -31,9 +31,17 @@
         'views/mqc_icu.xml',
         'views/mqc_blood.xml',
         'views/mqc_infect.xml',
+        'views/mqc_dialysis.xml',
+        'views/mqc_narcosis.xml',
+        'views/mqc_nurse.xml',
+        'views/mqc_index.xml',
+        'views/mqc_pathology.xml',
+        'views/mqc_pacs.xml',
+        'views/mqc_mouth.xml',
         'views/mqc_cfg.xml',
         'views/mqc_menuitem.xml',
         'views/blood_form_view.xml',
+        'views/narcosis_form_view.xml',
 
 
     ],

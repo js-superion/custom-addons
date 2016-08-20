@@ -5,12 +5,13 @@ from openerp import models, fields, api
 class Emergency(models.Model):
     _name = "mqc.emergency"
     _description = u'急诊学科质控指标'
-
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    _rec_name = 'year_month'
     # 一般信息 emerg,emergency 缩写
 
-    report_month = fields.Char(
-        u'上报月份',
-    )
+    # report_month = fields.Char(
+    #     u'上报月份',
+    # )
 
     emerg_case = fields.Integer(
         u'急诊病人数',
@@ -172,3 +173,9 @@ class Emergency(models.Model):
     cpr_failure = fields.Integer(
         u'CPR未成功病例数',
     )
+
+    _sql_constraints = [
+        ('year_month_uniq',
+         'UNIQUE (year_month)',
+         u'本月只能上报一次数据')
+    ]

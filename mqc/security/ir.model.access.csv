@@ -42,7 +42,7 @@ access_mqc_user_admin,name_mqc_user_admin,model_mqc_user,group_mqc_user_admin,1,
 
 access_mqc_icu_user,name_mqc_icu_user,model_mqc_icu,group_mqc_icu_user,1,1,1,0
 
-access_mqc_icu_user,name_mqc_infect_user,model_mqc_infect,group_mqc_infect_user,1,1,1,0
+access_mqc_infect_user,name_mqc_infect_user,model_mqc_infect,group_mqc_infect_user,1,1,1,0
 access_mqc_infect_part_user,name_mqc_infect_part,model_mqc_infect_part,group_mqc_infect_user,1,1,1,0
 access_mqc_infect_device_user,name_mqc_infect_device,model_mqc_infect_device,group_mqc_infect_user,1,1,1,0
 access_mqc_infect_bacteria,name_mqc_infect_bacteria,model_mqc_infect_bacteria,group_mqc_infect_user,1,1,1,0
@@ -60,5 +60,26 @@ access_mqc_infect_edu_user,name_mqc_infect_edu,model_mqc_infect_edu,group_mqc_in
 
 
 
+access_mqc_dialysis_user,name_mqc_dialysis_user,model_mqc_dialysis,group_mqc_dialysis_user,1,1,1,0
+
+access_mqc_narcosis_user,name_mqc_narcosis_user,model_mqc_narcosis,group_mqc_narcosis_user,1,1,1,0
+
+access_mqc_nurse_user,name_mqc_nurse_user,model_mqc_nurse,group_mqc_nurse_user,1,1,1,0
+access_mqc_nurse_detail_user,name_mqc_nurse_detail_user,model_mqc_nurse_detail,group_mqc_nurse_user,1,1,1,0
+
+access_mqc_index_user,name_mqc_index_user,model_mqc_index,group_mqc_index_user,1,1,1,0
+
+access_mqc_pathology_examtype_user,name_mqc_pathology_examtype,model_mqc_pathology_examtype,group_mqc_pathology_user,1,1,1,0
+access_mqc_pathology_user,name_mqc_pathology,model_mqc_pathology,group_mqc_pathology_user,1,1,1,0
+access_mqc_pathology_detail_user,name_mqc_pathology_detail,model_mqc_pathology_detail,group_mqc_pathology_user,1,1,1,0
+
+access_mqc_pacs_intervene_user,name_mqc_pacs_intervene,model_mqc_pacs_intervene,group_mqc_pacs_user,1,1,1,0
+access_mqc_pacs_user,name_mqc_pacs,model_mqc_pacs,group_mqc_pacs_user,1,1,1,0
+access_mqc_pacs_device_user,name_mqc_pacs_device,model_mqc_pacs_device,group_mqc_pacs_user,1,1,1,0
+access_mqc_pacs_detail_user,name_mqc_pacs_detail,model_mqc_pacs_detail,group_mqc_pacs_user,1,1,1,0
+
+access_mqc_mouth_user,name_mqc_mouth,model_mqc_mouth,group_mqc_mouth_user,1,1,1,0
+access_mqc_mouth_special_disease_user,name_mqc_mouth_special_disease,model_mqc_mouth_special_disease,group_mqc_mouth_user,1,1,1,0
+access_mqc_mouth_parotid_tumor_user,name_mqc_mouth_parotid_tumor,model_mqc_mouth_parotid_tumor,group_mqc_mouth_user,1,1,1,0
 
 ,,,,,,,

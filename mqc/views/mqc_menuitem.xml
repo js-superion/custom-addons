@@ -8,13 +8,16 @@
         <menuitem id="menu_mqc_form" name="质控数据填报" parent="menu_mqc"/>
             <!-- 二级子菜单 -->
             <menuitem id="menu_act_mqc_emrg" name="急诊" string="急诊质控数据" parent="menu_mqc_form" action="action_mqc_emrg" groups="group_mqc_merg_user" />
-            <menuitem id="menu_act_mqc_pathology" name="病理" string="病理质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
+            <menuitem id="menu_act_mqc_pathology" name="病理" string="病理质控数据" parent="menu_mqc_form" action="action_mqc_pathology"/>
             <menuitem id="menu_act_mqc_infect" name="院感" string="院感质控数据" parent="menu_mqc_form" action="action_mqc_infect" groups="group_mqc_infect_user"/>
+            <menuitem id="menu_act_mqc_dialysis" name="血透" string="血透质控数据" parent="menu_mqc_form" action="action_mqc_dialysis" groups="group_mqc_dialysis_user"/>
             <menuitem id="menu_act_mqc_icu" name="ICU"  string="ICU质控数据"  parent="menu_mqc_form" action="action_mqc_icu" groups="group_mqc_icu_user"/>
-            <menuitem id="menu_act_mqc_nursing" name="护理" string="护理质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
-            <menuitem id="menu_act_mqc_mouth" name="口腔" string="口腔质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
-            <menuitem id="menu_act_mqc_anesthesiology" name="麻醉" string="麻醉质控数据" parent="menu_mqc_form" action="action_mqc_emrg"/>
-            <menuitem id="act_mqc_blood" name="用血" string="用血" parent="menu_mqc_form" action="action_mqc_blood" groups="group_mqc_merg_user"/>
+            <menuitem id="menu_act_mqc_nursing" name="护理" string="护理质控数据" parent="menu_mqc_form" action="action_mqc_nurse" groups="group_mqc_nurse_user"/>
+            <menuitem id="menu_act_mqc_mouth" name="口腔" string="口腔质控数据" parent="menu_mqc_form" action="action_mqc_mouth" />
+            <menuitem id="menu_act_mqc_narcosis" name="麻醉" string="麻醉质控数据" parent="menu_mqc_form" action="action_mqc_narcosis" groups="group_mqc_narcosis_user"/>
+            <menuitem id="act_mqc_blood" name="用血" string="用血质控数据" parent="menu_mqc_form" action="action_mqc_blood" groups="group_mqc_merg_user"/>
+            <menuitem id="menu_act_mqc_index" name="医疗质量" string="医疗质量数据" parent="menu_mqc_form" action="action_mqc_index" groups="group_mqc_index_user"/>
+            <menuitem id="menu_act_mqc_pacs" name="医学影像" string="医学影像质控数据" parent="menu_mqc_form" action="action_mqc_pacs" groups="group_mqc_pacs_user"/>
 
         <menuitem id="menu_mqc_rpt" name="图形报表" parent="menu_mqc"/>
             <!-- 二级子菜单 -->
