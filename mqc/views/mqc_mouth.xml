@@ -19,7 +19,6 @@
                         <notebook colspan="1">
                             <page string="口腔质控报表">
                                 <group>
-                                    <field name="report_month" class="oe_inline"/>
                                     <field name="outp_case" class="oe_inline"/>
                                     <field name="mr_acpt_rate" class="oe_inline"/>
                                     <field name="presc_acpt_rate" class="oe_inline"/>
@@ -129,7 +128,7 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="create_date"/>
-                    <field name="report_month"/>
+                    <field name="year_month"/>
                 </search>
             </field>
         </record>

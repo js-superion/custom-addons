@@ -6,7 +6,8 @@ class Mouth(models.Model):
     _name = "mqc.mouth"
     _description = u'口腔质控'
 
-    report_month = fields.Char( u'上报月份', )
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    _rec_name = 'year_month'
     units_name = fields.Char( u'单位名称',)
     units_code = fields.Char(u'单位编码', )
 
