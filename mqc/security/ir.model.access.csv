@@ -82,4 +82,6 @@ access_mqc_mouth_user,name_mqc_mouth,model_mqc_mouth,group_mqc_mouth_user,1,1,1,
 access_mqc_mouth_special_disease_user,name_mqc_mouth_special_disease,model_mqc_mouth_special_disease,group_mqc_mouth_user,1,1,1,0
 access_mqc_mouth_parotid_tumor_user,name_mqc_mouth_parotid_tumor,model_mqc_mouth_parotid_tumor,group_mqc_mouth_user,1,1,1,0
 
+access_mqc_drug_user,name_mqc_drug_user,model_mqc_drug,group_mqc_drug_user,1,1,1,0
+
 ,,,,,,,

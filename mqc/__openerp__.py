@@ -38,6 +38,7 @@
         'views/mqc_pathology.xml',
         'views/mqc_pacs.xml',
         'views/mqc_mouth.xml',
+        'views/mqc_drug.xml',
         'views/mqc_cfg.xml',
         'views/mqc_menuitem.xml',
         'views/blood_form_view.xml',

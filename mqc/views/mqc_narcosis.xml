@@ -29,7 +29,7 @@
         </record>
 
         <!-- 表格视图 -->
-        <record id="view_mqc_blood_tree" model="ir.ui.view">
+        <record id="view_mqc_drug_tree" model="ir.ui.view">
             <field name="name">mqc.narcosis.tree</field>
             <field name="model">mqc.narcosis</field>
             <field name="arch" type="xml">
