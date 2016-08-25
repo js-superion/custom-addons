@@ -42,11 +42,15 @@
                     <sheet>
                         <notebook colspan="1">
                             <page string="全院临床用血">
-                                <div>
+                                <div id="blood_clinic_form">
 
                                 </div>
                             </page>
                         </notebook>
+                        <div>
+                            <printbutton htmlfrom="client"  string="打印" type="object" name="print" model="mqc.blood.clinic"  class="btn-primary"/>
+                            <printdesignbutton string="打印设计" model="mqc.blood.clinic" type="object" name="printdesign" class="btn-primary"/>
+                        </div>
                     </sheet>
                 </form>
             </field>

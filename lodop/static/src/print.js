@@ -68,16 +68,16 @@ odoo.define('lodop.print', function(require){
             var html='';
             if(this.node.attrs.htmlfrom) htmlfrom = this.node.attrs.htmlfrom;
             if(htmlfrom=='' || htmlfrom=='client'){
-                 html = $("#blood_form").html();
-                var width = $("#blood_form").width();
-                var height = $("#blood_form").height();
+                 html = $("#blood_clinic_form").html();
+                var width = $("#blood_clinic_form").width();
+                var height = $("#blood_clinic_form").height();
                  LODOP.ADD_PRINT_TABLE(88,40,width,height,html);
             }else{
                 if(this.node.attrs.model) model=this.node.attrs.model;
                 if(this.node.attrs.key) key=this.node.attrs.key;
                 printgetmdl(model, key, function (data) {
                     if(!data){
-                        html = $("#blood_form").html();
+                        html = $("#blood_clinic_form").html();
                         LODOP.ADD_PRINT_HTM(88,40,321,185,html);
                     }else{
                          printMdl = data;

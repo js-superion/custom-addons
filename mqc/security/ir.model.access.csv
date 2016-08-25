@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mqc_emerg_user,name_mqc_emergency_user,model_mqc_emergency,group_mqc_merg_user,1,1,1,0
-access_mqc_emerg_admin,name_mqc_emergency_admin,model_mqc_emergency,group_mqc_merg_admin,1,1,1,1
+access_mqc_emerg_user,name_mqc_emergency_user,model_mqc_emergency,group_mqc_emerg_user,1,1,1,0
+access_mqc_emerg_admin,name_mqc_emergency_admin,model_mqc_emergency,group_mqc_emerg_admin,1,1,1,1
 
 
 
@@ -83,5 +83,6 @@ access_mqc_mouth_special_disease_user,name_mqc_mouth_special_disease,model_mqc_m
 access_mqc_mouth_parotid_tumor_user,name_mqc_mouth_parotid_tumor,model_mqc_mouth_parotid_tumor,group_mqc_mouth_user,1,1,1,0
 
 access_mqc_drug_user,name_mqc_drug_user,model_mqc_drug,group_mqc_drug_user,1,1,1,0
+access_print_template_user,name_print_template,lodop.model_print_template,group_print_template,1,1,1,1
 
 ,,,,,,,

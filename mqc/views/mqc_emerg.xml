@@ -1,7 +1,7 @@
 <odoo>
     <data>
 
-        <record model="ir.actions.act_window" id="action_mqc_emrg">
+        <record model="ir.actions.act_window" id="action_mqc_emerg">
             <field name="name">急诊质控指标</field>
             <field name="res_model">mqc.emergency</field>
             <field name="view_type">form</field>
@@ -10,7 +10,7 @@
 
 
         <!-- 图书表单视图 -->
-        <record id="view_emrg_form" model="ir.ui.view">
+        <record id="view_mqc_emerg_form" model="ir.ui.view">
             <field name="name">mqc.emergency.form</field>
             <field name="model">mqc.emergency</field>
             <field name="arch" type="xml">
@@ -94,13 +94,6 @@
                                      <div>
                                         <field name="mass_case" class="oe_inline"/>件
                                     </div>
-
-                                    <!--<label for="report_month"/>-->
-                                     <!--<div>-->
-                                        <!--<field name="report_month" class="oe_inline"/>年/月-->
-                                    <!--</div>-->
-
-
                                 </group>
                             </page>
                             <page string="有机磷农药中毒">
@@ -125,7 +118,7 @@
                                     <field name="bck_inout_confirm"/>
                                     <field name="bck_cure_rate"/>
                                     <field name="bck_death_case"/>
-                                    <field name="lavage_case"></field>mm
+                                    <field name="lavage_case"></field>
                                     <field name="bck_assist_breath"></field>
                                     <field name="perfusion_rate"/>
                                     <field name="perfusion_within_four"/>

@@ -47,7 +47,7 @@
                                 出院总人数
                             </p>
                         </td>
-                        <td width="156" valign="top">
+                        <td width="156" valign="bottom">
                             <p align="center">
                                 <field name="out_case" class="oe_inline"/>
                             </p>
