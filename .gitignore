@@ -25,6 +25,7 @@ $RECYCLE.BIN/
 *.egg-info
 dist/
 build/
+material_backend_theme_v9/
 eggs/
 parts/
 var/
@@ -46,3 +47,4 @@ pip-log.txt
 .mr.developer.cfg
 *.pyc
 *.js
+*.gitignore
