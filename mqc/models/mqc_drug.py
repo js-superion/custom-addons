@@ -86,8 +86,8 @@ class Drug(models.Model):
     kzrccfgz = fields.Float(u'开展日常查房工作')
     kzkjywlcsygl = fields.Float(u'开展抗菌药物临床使用管理')
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]

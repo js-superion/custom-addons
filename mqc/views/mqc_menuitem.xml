@@ -22,18 +22,18 @@
 
         <menuitem id="menu_mqc_rpt" name="图形报表" parent="menu_mqc"/>
             <!-- 二级子菜单 -->
-            <menuitem id="menu_mqc_rpt_emrg" name="急诊" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_pathology" name="病理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_icu" name="ICU" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_nursing" name="护理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_mouth" name="口腔" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_anesthesiology" name="麻醉" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
-            <menuitem id="menu_mqc_rpt_blood" name="用血" string="用血质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report"/>
+            <menuitem id="menu_mqc_rpt_emrg" name="急诊" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_pathology" name="病理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_icu" name="ICU" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_nursing" name="护理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_mouth" name="口腔" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_anesthesiology" name="麻醉" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc_rpt_blood" name="用血" string="用血质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
 
          <menuitem id="menu_mqc_cfg" name="配置信息" parent="menu_mqc"/>
             <!-- 二级子菜单 -->
-            <menuitem id="menu_mqc_hospital" name="医院对照" string="区卫平台医院编码" parent="menu_mqc_cfg" action="action_mqc_hospital"/>
-            <menuitem id="menu_mqc__user" name="用户对照" string="区卫平台用户编码" parent="menu_mqc_cfg" action="action_mqc_user"/>
+            <menuitem id="menu_mqc_hospital" name="医院对照" string="区卫平台医院编码" parent="menu_mqc_cfg" action="action_mqc_hospital" groups="group_mqc_admin"/>
+            <menuitem id="menu_mqc__user" name="用户对照" string="区卫平台用户编码" parent="menu_mqc_cfg" action="action_mqc_user" groups="group_mqc_admin"/>
 
     </data>
 </odoo>

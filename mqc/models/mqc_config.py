@@ -14,11 +14,19 @@ class Mqc(models.Model):
     company_id = fields.Many2one(
         'res.company',)
     units_code = fields.Char(u'单位编码')
-    units_name = fields.Char(u'单位名称')
-    dept_name = fields.Char(u'上报科室')
-    report_date = fields.Char(u'上报月份')
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name,)
+    dept_name = fields.Char(u'上报科室',
+                            default=lambda self: self.env.user.employee_ids.department_id.name,)
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     # report_1 = fields.Many2one('mqc.blood.clinic',u'关联全院临床用血情况')
     # report_2 = fields.Many2one('mqc.blood.construct', u'关联输血科建设及检测技术')
+
+    _sql_constraints = [
+        ('unit_dept_month_uniq',
+         'UNIQUE (year_month,units_name,dept_name)',
+         u'本月只能上报一次数据')
+    ]
 
 
 

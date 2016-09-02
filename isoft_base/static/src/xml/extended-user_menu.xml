@@ -22,23 +22,23 @@
             <div class="row">
                 <div class="col-sm-offset-2 col-md-offset-2 col-sm-8 col-md-8 user-details">
                     <div class="user-image">
-                        <img src="/web/static/src/img/logo2.png" alt="Odoo (Formerly OpenERP)" title="Odoo (Formerly OpenERP)" class="img-circle"/>
+                        <img src="/isoft_base/static/src/img/logo2.png" alt="Odoo (Formerly OpenERP)" title="Odoo (Formerly OpenERP)" class="img-circle"/>
                     </div>
                     <div class="user-info-block">
-                        <div class="user-heading">
-                            <h3>
-                                Version <t t-esc="db_info.server_version"/>
-                                (Community Edition)
-                            </h3>
-                            <t t-if="db_info.expiration_date">
-                                <h5>Database expiration: <t t-esc="new moment(db_info.expiration_date).format('LL')"/></h5>
-                            </t>
-                        </div>
+                        <!--<div class="user-heading">-->
+                            <!--<h3>-->
+                                <!--Version <t t-esc="db_info.server_version"/>-->
+                                <!--(Community Edition)-->
+                            <!--</h3>-->
+                            <!--<t t-if="db_info.expiration_date">-->
+                                <!--<h5>Database expiration: <t t-esc="new moment(db_info.expiration_date).format('LL')"/></h5>-->
+                            <!--</t>-->
+                        <!--</div>-->
                         <div class="user-body">
                             <div class="tab-content">
                                 <div id="settings" class="tab-pane active">
                                     <h4>Copyright © 2004-2016 Superion</h4>
-                                    <p>Odoo is a trademark of <a target="_blank" href="https://www.superion.cn" style="text-decoration: underline;">Superion</a></p>
+                                    <!--<p>Odoo is a trademark of <a target="_blank" href="https://www.superion.cn" style="text-decoration: underline;">Superion</a></p>-->
                                     <p>更多信息,请访问 <a target="_blank" href="https://www.superion.cn" style="text-decoration: underline;">Superion</a></p>
                                     <p>
                                       <!--<a href="https://www.odoo.com/web/about/facebook"><i class="fa fa-facebook-square fa-3x social-fb"></i></a>-->
