@@ -22,6 +22,13 @@ class Pathology(models.Model):
     fish_case = fields.Integer(u'FISH检测例数', )
     details = fields.One2many('mqc.pathology.detail', 'pathology_id', u'护理质控明细')
 
+    @api.multi
+    def unlink(self):
+        for item in self:
+            item.mqc_id.unlink()
+        return super(Pathology, self).unlink()
+
+
     @api.constrains('year_month')
     def _check_year_month(self):
         domain = [
@@ -31,6 +38,8 @@ class Pathology(models.Model):
         length = len(self.search(domain))
         if length > 1:
             raise ValidationError(u'本月只能上报一次数据')
+
+
 
 
 
@@ -49,15 +58,15 @@ class PathologyDetail(models.Model):
     #诊断部分
     outp_exam_case = fields.Integer(u'门诊检查人数', )
     adm_exam_case = fields.Integer(u'住院检查人数', )
-    rpt_less5d_reach = fields.Integer(u'常规报告≦5个工作日完成率', )
-    cellrpt_less2d_reach = fields.Integer(u'细胞学报告≦2个工作日完成率', )
-    path_diag_accuracy_rate = fields.Integer(u'病理诊断的准确率', )
-    cryostat_section_diag_rate = fields.Integer(u'冷冻切片与常规诊断的符合率', )
+    rpt_less5d_reach = fields.Integer(u'常规报告≦5个工作日完成率(%)', )
+    cellrpt_less2d_reach = fields.Integer(u'细胞学报告≦2个工作日完成率(%)', )
+    path_diag_accuracy_rate = fields.Integer(u'病理诊断的准确率(%)', )
+    cryostat_section_diag_rate = fields.Integer(u'冷冻切片与常规诊断的符合率(%)', )
     cryostat_section_less30min_rate = fields.Integer(u'冷冻切片≦30min完成例数', )
     is_review = fields.Boolean(u'执行复验制度（有/无）', )
     med_error_case = fields.Integer(u'医疗差错或过失发生次数', )
     #
     section_total = fields.Integer(u'切片总数', )
-    grade_a_rate = fields.Float(u'甲级片率', )
-    grade_b_rate = fields.Float(u'乙级片率', )
-    grade_c_rate = fields.Float(u'丙级片率', )
+    grade_a_rate = fields.Float(u'甲级片率(%)', )
+    grade_b_rate = fields.Float(u'乙级片率(%)', )
+    grade_c_rate = fields.Float(u'丙级片率(%)', )

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields
+from openerp import models, fields,api
 
 class Nurse(models.Model):
     _name = "mqc.nurse" #nurse 透析
@@ -14,11 +14,17 @@ class Nurse(models.Model):
 
     nurse_detail = fields.One2many('mqc.nurse.detail','nurse_id', u'护理质控明细')
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
+    @api.multi
+    def unlink(self):
+        for item in self:
+            item.mqc_id.unlink()
+        return super(Nurse, self).unlink()
+
 
 
 class NurseDetail(models.Model):

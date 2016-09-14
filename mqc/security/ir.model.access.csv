@@ -7,7 +7,7 @@ access_mqc_emerg_admin,name_mqc_emergency_admin,model_mqc_emergency,group_mqc_em
 access_mqc_blood_user,name_mqc_blood_user,model_mqc_blood,group_mqc_blood_user,1,0,0,0
 access_mqc_blood_admin,name_mqc_blood_admin,model_mqc_blood,group_mqc_blood_admin,1,1,1,0
 
-access_mqc_mqc_user,name_mqc_mqc_user,model_mqc_mqc,group_mqc_mqc_user,1,1,1,0
+access_mqc_mqc_user,name_mqc_mqc_user,model_mqc_mqc,group_mqc_mqc_user,1,1,1,1
 
 access_mqc_blood_cons_user,name_mqc_blood_cons_admin,model_mqc_blood_construct,group_mqc_blood_user,1,1,1,0
 access_mqc_blood_cons_det_user,name_mqc_blood_cons_det_user,model_mqc_blood_construct_detail,group_mqc_blood_user,1,1,1,0

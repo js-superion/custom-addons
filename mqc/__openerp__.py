@@ -27,6 +27,7 @@
         'security/emerg_security.xml',
         'security/ir.model.access.csv',
         'report/mqc_emrg_report_view.xml',
+        'report/mqc_blood_report_view.xml',
         'views/mqc_emerg.xml',
         'views/mqc_icu.xml',
         'views/mqc_blood.xml',

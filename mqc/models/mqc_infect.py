@@ -30,11 +30,11 @@ class Infect(models.Model):
     edu_id = fields.Many2one('mqc.infect.edu', u'继续教育情况')
 
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
 
 
 #相关字典
@@ -80,7 +80,7 @@ class InfectEnv(models.Model):
     sample_id = fields.Many2one('mqc.infect.sample',u'标本名',required=True, )
     monitor_num = fields.Integer(u'监测数')
     accept_num = fields.Integer(u'合格数')
-    accept_rate = fields.Integer(u'合格率')
+    accept_rate = fields.Integer(u'合格率(%)')
 
 
 
@@ -102,7 +102,7 @@ class InfectIcu(models.Model):
     day_infect_rate = fields.Float( u'日感染率%',)
     incidence_rate = fields.Float( u'例次日感染发病率%',)
     avg_severity = fields.Char( u'平均病情严重程度',)
-    adjust_day_infect = fields.Float( u'调整日感染率',)
+    adjust_day_infect = fields.Float( u'调整日感染率(%)',)
     adjust_case_infect = fields.Float( u'调整例次日感染率%',)
 
 class InfectDevices(models.Model):
@@ -129,7 +129,7 @@ class InfectSsi(models.Model):
     site_infect_rate = fields.Float(u'手术部位感染率%',)
     opr1_num = fields.Integer(u'I类手术患者人数', )
     opr1_incision_case = fields.Integer(u'I类手术切口感染例次',)
-    opr1_incision_rate = fields.Float( u'I类手术切口感染例次率',)
+    opr1_incision_rate = fields.Float( u'I类手术切口感染例次率(%)',)
 
 class InfectRbm(models.Model):
     _name = "mqc.infect.rbm" #rbm,resistance bacteria monitor，缩写 抵抗  细菌 监测

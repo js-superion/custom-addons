@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields
+from openerp import models, fields,api
 
 class Dialysis(models.Model):
     _name = "mqc.dialysis" #dialysis 透析
@@ -20,8 +20,8 @@ class Dialysis(models.Model):
     kidney_exam_case = fields.Integer(u'肾活检患者数')
     exam_complications = fields.Integer(u'肾活检术后并发症例数')
     pressure_control_case = fields.Integer(u'目标血压控制例数')
-    iga_rate = fields.Float(u'初治IgA肾病患者进入肾活检临床路径百分率（%）')
-    ln_rate = fields.Float(u'初治狼疮性肾炎进入肾活检临床路径百分率（%）') #狼疮性肾炎lupus nephritis
+    iga_rate = fields.Float(u'初治IgA肾病患者进入肾活检临床路径百分率(%)')
+    ln_rate = fields.Float(u'初治狼疮性肾炎进入肾活检临床路径百分率(%)') #狼疮性肾炎lupus nephritis
 
     #急性肾衰竭
     out_case1 = fields.Integer(u'出院病人数')
@@ -31,7 +31,7 @@ class Dialysis(models.Model):
     kidney_exam_case1 = fields.Integer(u'肾活检患者数')
     exam_complications1 = fields.Integer(u'肾活检术后并发症例数')
     finish_cp_case = fields.Integer(u'开展完成临床路径例数')#cp clinic pathway
-    acpt_dialysis_case = fields.Float(u'接受血液净化治疗患者百分率（%）')
+    acpt_dialysis_case = fields.Float(u'接受血液净化治疗患者百分率(%)')
 
     #慢性肾衰竭CKD5期
     out_case2 = fields.Integer(u'出院病人数')
@@ -54,11 +54,11 @@ class Dialysis(models.Model):
     total_case = fields.Integer(u'血透总例次', )
     mohc_newpats= fields.Integer(u'新报患者数', )
     mohc_uppats = fields.Integer(u'更新患者数', )
-    mohc_val_rate = fields.Float(u'填报合格率', ) #validate rate
-    dialyzer_reuse_rate = fields.Float(u'透析器复用患者百分率', )
-    week_excess12h_rate = fields.Float(u'血透时间>12h/周患者百分率', )
+    mohc_val_rate = fields.Float(u'填报合格率(%)', ) #validate rate
+    dialyzer_reuse_rate = fields.Float(u'透析器复用患者百分率(%)', )
+    week_excess12h_rate = fields.Float(u'血透时间>12h/周患者百分率(%)', )
 
-    weight_val_rate = fields.Float(u'千体重达标率', )
+    weight_val_rate = fields.Float(u'千体重达标率(%)', )
     weight_excess3kg_rate = fields.Integer(u'透析间期体重增加>3公斤患者数', )
 
     #非住院长期腹膜透析 #pd 缩写 Peritoneal dialysis
@@ -71,12 +71,19 @@ class Dialysis(models.Model):
     pd_death_case = fields.Integer(u'死亡患者数', )
     pd_mohc_newpats = fields.Integer(u'新报患者数', )
     pd_mohc_uppats = fields.Integer(u'更新患者数', )
-    pd_mohc_rate = fields.Float(u'填报合格率', )
+    pd_mohc_rate = fields.Float(u'填报合格率(%)', )
     peritonitis_case = fields.Integer(u'腹透相关腹膜炎发生例数', ) #peritonitis 腹膜炎
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    @api.multi
+    def unlink(self):
+        for dialysis in self:
+            dialysis.mqc_id.unlink()
+        return super(Dialysis, self).unlink()
+
+
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
 

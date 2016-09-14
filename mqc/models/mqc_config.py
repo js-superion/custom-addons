@@ -12,8 +12,9 @@ class Mqc(models.Model):
     _name = 'mqc.mqc'
     _description = u"医疗质控单位填报"
     company_id = fields.Many2one(
-        'res.company',)
-    units_code = fields.Char(u'单位编码')
+        'res.company',required=True,default=lambda self: self.env.user.company_id.id)
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code)
     units_name = fields.Char(u'单位名称',
                              default=lambda self: self.env.user.company_id.name,)
     dept_name = fields.Char(u'上报科室',

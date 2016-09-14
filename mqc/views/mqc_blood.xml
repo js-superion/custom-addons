@@ -48,8 +48,8 @@
                             </page>
                         </notebook>
                         <div>
-                            <printbutton htmlfrom="client"  string="打印" type="object" name="print" model="mqc.blood.clinic"  class="btn-primary"/>
-                            <printdesignbutton string="打印设计" model="mqc.blood.clinic" type="object" name="printdesign" class="btn-primary"/>
+                            <!--<printbutton htmlfrom="client"  string="打印" type="object" name="print" model="mqc.blood.clinic"  class="btn-primary"/>-->
+                            <expbutton exp_id="blood_clinic_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>
                         </div>
                     </sheet>
                 </form>
@@ -64,7 +64,10 @@
                 <form>
                     <sheet>
                         <notebook colspan="2">
+
+
                             <page string="输血科建设及检测技术">
+                                 <div  id="blood_cons_form">
                                 <group>
                                     <field name="create_type" class="oe_inline"/>
                                     <field name="dept_emp_num" class="oe_inline"/>
@@ -90,8 +93,15 @@
                                         </form>
                                     </field>
                                 </group>
+                                 </div>
                             </page>
+
+
                         </notebook>
+                         <div>
+                            <!--<printbutton htmlfrom="client"  string="打印" type="object" name="print"   class="btn-primary"/>-->
+                            <expbutton exp_id="blood_cons_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>
+                        </div>
                     </sheet>
                 </form>
             </field>
@@ -108,7 +118,7 @@
                             <page string="血液成分质量反馈">
                                 <group>
                                     <field name="units_name" class="oe_inline"/>
-                                    <field name="report_month" class="oe_inline"/>
+                                    <field name="year_month" class="oe_inline"/>
                                     <field name="detail_ids" class="oe_inline">
                                         <tree string="血液成分质量明细" editable="bottom">
                                             <field name="component_id"/>
@@ -161,7 +171,7 @@
                                         </field>
                                     </group>
                                     <group colspan="2">
-                                        <field name="report_month" class="oe_inline"/>
+                                        <field name="year_month" class="oe_inline"/>
                                         <field name="react_ids" class="oe_inline">
                                             <tree string="不良反应报告" editable="bottom">
                                                 <field name="react_id"/>
@@ -193,7 +203,7 @@
                             <page string="意见反馈">
                                 <group>
                                     <field name="units_name" class="oe_inline"/>
-                                    <field name="report_month" class="oe_inline"/>
+                                    <field name="year_month" class="oe_inline"/>
                                     <field name="advise" class="oe_inline"/>
                                     <field name="safe_advise" class="oe_inline"/>
                                 </group>
@@ -211,7 +221,6 @@
             <field name="model">mqc.blood</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="mqc_id"/>
                     <field name="year_month"/>
                     <field name="report_clinic"/>
                     <field name="report_construct"/>

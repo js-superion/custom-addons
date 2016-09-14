@@ -14,11 +14,18 @@ class Pacs(models.Model):
     intervene_id = fields.Many2one('mqc.pacs.intervene', u'介入放射', required=True)
     details = fields.One2many('mqc.pacs.detail', 'pacs_id', u'影像质控明细')
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    @api.multi
+    def unlink(self):
+        for item in self:
+            item.mqc_id.unlink()
+        return super(Pacs, self).unlink()
+
+
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
 
 class PacsIntervene(models.Model):
     _name = 'mqc.pacs.intervene'
@@ -28,7 +35,7 @@ class PacsIntervene(models.Model):
     inp_case = fields.Integer(u'入院病人数', )
     outp_case = fields.Integer(u'出院病人数', )
     bed_use_rate = fields.Float(u'床位使用率(%)', )
-    in_out_accord_diag = fields.Integer(u'入出院诊断符合率', )
+    in_out_accord_diag = fields.Integer(u'入出院诊断符合率(%)', )
     self_pay_case = fields.Integer(u'自费例数', )
     insurance_pats = fields.Integer(u'医保例数', )
     critical_pat_case = fields.Integer(u'危重病例数', )
@@ -37,21 +44,21 @@ class PacsIntervene(models.Model):
     avg_adm_days = fields.Integer(u'平均住院日', )
     outp_avg_charge = fields.Integer(u'出院者平均医疗费用', )
     drug_ratio = fields.Integer(u'药品占总费用比例', )
-    opr_complication_rate = fields.Integer(u'术后并发症发生率', )
-    antibiotics_prevent_rate = fields.Integer(u'预防抗生素使用率', )
+    opr_complication_rate = fields.Integer(u'术后并发症发生率(%)', )
+    antibiotics_prevent_rate = fields.Integer(u'预防抗生素使用率(%)', )
     inblood_cure_case = fields.Integer(u'血管内治疗人数', )
     unblood_cure_case = fields.Integer(u'非血管治疗人数', )
     internal_medicine_case = fields.Integer(u'内科治疗人数', )
     sjjr_case = fields.Integer(u'神经介入诊疗人数', )
-    opr_complication_rate2 = fields.Float(u'术后并发症数/率（％）', )
-    inhos_infect_rate = fields.Float(u'院内感染数/率（％）', )
-    accord_diag_rate = fields.Float(u'临床与病理诊断符合数/率（％）', )
+    opr_complication_rate2 = fields.Float(u'术后并发症数/率(%)', )
+    inhos_infect_rate = fields.Float(u'院内感染数/率(%)', )
+    accord_diag_rate = fields.Float(u'临床与病理诊断符合数/率(%)', )
     outhos_cure_case = fields.Integer(u'出院治愈人数', )
     outhos_better_case = fields.Integer(u'出院好转人数', )
     outhos_uncure_case = fields.Integer(u'出院未愈人数', )
     outhos_death_case = fields.Integer(u'出院死亡人数', )
     outhos_other_case = fields.Integer(u'其他（例）', )
-    outhos_better_rate = fields.Integer(u'出院好转率', )
+    outhos_better_rate = fields.Integer(u'出院好转率(%)', )
     #手术并发症
     hematoma_case = fields.Integer(u'血肿例数', ) #hematoma 血肿
     fa_case = fields.Integer(u'假性动脉瘤例数', ) #FA; false aneurysm
@@ -96,6 +103,6 @@ class PacsDetail(models.Model):
     critical_value_case = fields.Integer(u'危急值报告人数', )
     crc_case = fields.Integer(u'结直肠癌病例数', ) #colorectal cancer (CRC)
     contrast_agent_reaction = fields.Integer(u'对比剂不良反应', )
-    positive_rate = fields.Integer(u'检查阳性率', )
+    positive_rate = fields.Integer(u'检查阳性率(%)', )
     finish_case = fields.Integer(u'功能成像完成人数', )
-    enhance_rate = fields.Integer(u'增强率', )
+    enhance_rate = fields.Integer(u'增强率(%)', )

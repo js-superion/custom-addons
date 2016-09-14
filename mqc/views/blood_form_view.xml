@@ -27,7 +27,7 @@
                         </td>
                         <td width="72" valign="top">
                             <p align="center">
-                                <field name="units_name" class="oe_inline"/>
+                                <field name="year_month" class="oe_inline"/>
                             </p>
                         </td>
                         <td width="72" valign="top">

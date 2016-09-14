@@ -29,11 +29,12 @@
         </record>
 
         <!-- 表格视图 -->
-        <record id="view_mqc_drug_tree" model="ir.ui.view">
+        <record id="view_mqc_narcosis_tree" model="ir.ui.view">
             <field name="name">mqc.narcosis.tree</field>
             <field name="model">mqc.narcosis</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="year_month"/>
                     <field name="field1" class="oe_inline"/>
                     <field name="field2" class="oe_inline"/>
                     <field name="field3" class="oe_inline"/>

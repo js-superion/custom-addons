@@ -6,10 +6,14 @@ class BloodClinic(models.Model):
     _name = "mqc.blood.clinic"
     _description = u'全院临床用血情况'
 
-    report_month = fields.Char( u'上报月份', )
-    units_name = fields.Char( u'单位名称',)
-    units_code = fields.Char(u'单位编码', )
-
+    # _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name, )
+    dept_name = fields.Char(u'上报科室',
+                            default=lambda self: self.env.user.employee_ids.department_id.name, )
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code)
     out_case = fields.Integer( u'出院总人数', )
     use_blood_case = fields.Integer(u'用血总人数',)
     opr_num  = fields.Integer(u'手术台数',)
@@ -34,9 +38,26 @@ class BloodClinic(models.Model):
     dilution_case = fields.Integer(u'稀释式人数',)
     total_self_usage = fields.Integer( u'自体输血量',)
     total_self_case = fields.Integer( u'自体输血数',)
-    component_rate = fields.Integer(  u'成分输血率',)
-    self_rate = fields.Float( u'自体输血率',)
+    component_rate = fields.Float(  u'成分输血率(%)',)
+    self_rate = fields.Float( u'自体输血率(%)',)
     avg_usage= fields.Integer(u'住（出）院患者人均用血量',)
+
+    @api.multi
+    @api.depends('year_month', 'units_name')
+    def name_get(self):
+        result = []
+        for construct in self:
+            # authors = construct.author_ids.mapped('name')
+            name = u'%s %s' % (construct.units_name, construct.year_month)
+            result.append((construct.id, name))
+        return result
+
+    _sql_constraints = [
+        ('unit_dept_month_uniq',
+         'UNIQUE (year_month,units_name,dept_name)',
+         u'本月只能上报一次数据')
+    ]
+
 
 class Blood(models.Model):
     _name = "mqc.blood"
@@ -53,14 +74,21 @@ class Blood(models.Model):
     report_manager = fields.Many2one('mqc.blood.manage', u'输血职能管理')
     report_advise = fields.Many2one('mqc.blood.advise', u'质量安全工作意见')
 
-    @api.constrains('year_month')
-    def _check_year_month(self):
-        domain = [
-            ('create_uid', '=', self.create_uid.id),
-            ('year_month', '=', self.year_month),
-        ]
-        if len(self.search(domain)) > 1:
-            raise ValidationError(u'本月只能上报一次数据')
+    # @api.constrains('year_month')
+    # def _check_year_month(self):
+    #     domain = [
+    #         ('create_uid', '=', self.create_uid.id),
+    #         ('year_month', '=', self.year_month),
+    #     ]
+    #     if len(self.search(domain)) > 1:
+    #         raise ValidationError(u'本月只能上报一次数据')
+
+    @api.multi
+    def unlink(self):
+        for blood in self:
+            blood.mqc_id.unlink()
+        return super(Blood, self).unlink()
+
 
 
 #相关字典
@@ -68,45 +96,74 @@ class BloodTech(models.Model):
     _name = "mqc.blood.tech"
     _description = u"输血科检测技术"
     name = fields.Char(u'技术名称',)
+    _sql_constraints = [
+        ('name_uniq',
+         'UNIQUE(name)',
+         u'名称不能重复'
+         )
+    ]
 
 class BloodComp(models.Model):
     _name = "mqc.blood.component"
     _description = u"血液成分"
     name = fields.Char(u'成分名称',)
+    _sql_constraints = [
+        ('name_uniq',
+         'UNIQUE(name)',
+         u'名称不能重复'
+         )
+    ]
 
 class BloodManageItem(models.Model):
     _name = "mqc.blood.quota"
     _description = u"输血管理指标"
     name = fields.Char(u'指标名称',)
+    _sql_constraints = [
+        ('name_uniq',
+         'UNIQUE(name)',
+         u'名称不能重复'
+         )
+    ]
 
 class BloodReact(models.Model):
     _name = "mqc.blood.react"
     _description = u"不良反应"
     name = fields.Char(u'名称',)
+    _sql_constraints = [
+        ('name_uniq',
+         'UNIQUE(name)',
+         u'名称不能重复'
+         )
+    ]
 
 
 class BloodConstructDetail(models.Model):
     _name = "mqc.blood.construct.detail"
     _description = u"输血科建设及检测技术明细"
-
     tech_id = fields.Many2one('mqc.blood.tech',u'输血科检测技术',required=True, )
     construct_id = fields.Many2one('mqc.blood.construct',u'主记录',required=True, )
     #关联技术字典
     tech_name = fields.Char(u'技术名称', related='tech_id.name', readonly=False, store=True, )
-    opr_method = fields.Char( u'操作方法',required=True,)
+    opr_method = fields.Char( u'操作方法',required=False,)
 
     cases = fields.Integer(u'例数', )
-    indoor_qc_freq = fields.Float(u'室内质控频率', )
+    indoor_qc_freq = fields.Float(u'室内质控频率(%)', )
     province_eqa = fields.Char(u'省室间质评结果', ) # eqa  = external quality assessment
     country_eqa = fields.Char(u'国室间质评结果', )
+
+
 
 class BloodConstruct(models.Model):
     _name = "mqc.blood.construct"
     _description = u'输血科建设及检测技术'
 
-    report_month = fields.Char( u'上报月份',)
-    units_name = fields.Char( u'单位名称',)
-    units_code = fields.Char(u'单位编码',)
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name, )
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code,)
+    dept_name = fields.Char(u'上报科室',
+                            default=lambda self: self.env.user.employee_ids.department_id.name, )
     create_type = fields.Selection([('01', u'独立建制'), ('02', u'未设独立建制')],
                                    u'输血科或血库建制')
     dept_emp_num = fields.Integer(u'科室人数',)
@@ -120,10 +177,33 @@ class BloodQuality(models.Model):
     _name = "mqc.blood.qlty"
     _description = u'血液成分质量'
 
-    report_month = fields.Char( u'上报月份',)
-    units_name = fields.Char( u'单位名称',)
-    units_code = fields.Char(u'单位编码',)
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name, )
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code,)
+    dept_name = fields.Char(u'上报科室',
+                            default=lambda self: self.env.user.employee_ids.department_id.name, )
+
     detail_ids = fields.One2many('mqc.blood.qlty.detail', 'qlty_id', u'质量明细') #关联明细
+
+    @api.multi
+    @api.depends('year_month', 'units_name')
+    def name_get(self):
+        result = []
+        for qlty in self:
+            # authors = construct.author_ids.mapped('name')
+            name = u'%s %s' % (qlty.units_name, qlty.year_month)
+            result.append((qlty.id, name))
+        return result
+
+    _sql_constraints = [
+        ('unit_dept_month_uniq',
+         'UNIQUE (year_month,units_name,dept_name)',
+         u'本月只能上报一次数据')
+    ]
+
+
 
 class BloodQualityDetail(models.Model):
     _name = "mqc.blood.qlty.detail"
@@ -139,12 +219,32 @@ class BloodQualityDetail(models.Model):
 class BloodManage(models.Model):
     _name = "mqc.blood.manage"
     _description = u'输血职能管理'
-
-    report_month = fields.Char( u'上报月份',)
-    units_name = fields.Char( u'单位名称',)
-    units_code = fields.Char(u'单位编码',)
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name, )
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code,)
+    dept_name = fields.Char(u'上报科室',
+                            default=lambda self: self.env.user.employee_ids.department_id.name, )
     detail_ids = fields.One2many('mqc.blood.manage.detail', 'manage_id', u'项目明细') #关联明细
     react_ids = fields.One2many('mqc.blood.manage.react', 'manage_id', u'不良反应报告') #关联明细
+
+    @api.multi
+    @api.depends('year_month', 'units_name')
+    def name_get(self):
+        result = []
+        for qlty in self:
+            # authors = construct.author_ids.mapped('name')
+            name = u'%s %s' % (qlty.units_name, qlty.year_month)
+            result.append((qlty.id, name))
+        return result
+
+    _sql_constraints = [
+        ('unit_dept_month_uniq',
+         'UNIQUE (year_month,units_name,dept_name)',
+         u'本月只能上报一次数据')
+    ]
+
 
 class BloodManageReact(models.Model):
     _name = "mqc.blood.manage.react"
@@ -167,9 +267,21 @@ class BloodAdvise(models.Model):
     _name = "mqc.blood.advise"
     _description = u'质量安全工作意见反馈'
 
-    report_month = fields.Char( u'上报月份',)
-    units_name = fields.Char( u'单位名称',)
-    units_code = fields.Char(u'单位编码',)
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
+    units_name = fields.Char(u'单位名称',
+                             default=lambda self: self.env.user.company_id.name, )
+    units_code = fields.Char(u'单位编码',
+                             default=lambda self: self.env.user.company_id.units_code,)
     advise = fields.Text(u'您对临床用血质量安全与质控工作的建议',)
     safe_advise = fields.Text(u'您认为目前输血工作中尚存在的安全隐患',)
+
+    @api.multi
+    @api.depends('year_month', 'units_name')
+    def name_get(self):
+        result = []
+        for qlty in self:
+            # authors = construct.author_ids.mapped('name')
+            name = u'%s %s' % (qlty.units_name, qlty.year_month)
+            result.append((qlty.id, name))
+        return result
 

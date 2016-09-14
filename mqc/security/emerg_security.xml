@@ -158,23 +158,60 @@
             <field name="model_id" ref="model_mqc_emergency"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
+        <!--输血质控规则-->
         <record id="rule_mqc_blood" model="ir.rule">
             <field name="name">mqc规则:查看输血数据</field>
             <field name="model_id" ref="model_mqc_blood"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
+        <record id="rule_mqc_blood_clinic" model="ir.rule">
+            <field name="name">mqc规则:查看输血数据(临床用血)</field>
+            <field name="model_id" ref="model_mqc_blood_clinic"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('units_name', '=', user.company_id.name)]</field>
+        </record>
+        <record id="rule_mqc_blood_construct" model="ir.rule">
+            <field name="name">mqc规则:查看输血数据(输血科建设)</field>
+            <field name="model_id" ref="model_mqc_blood_construct"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('units_name', '=', user.company_id.name)]</field>
+        </record>
+        <record id="rule_mqc_blood_qlty" model="ir.rule">
+            <field name="name">mqc规则:查看输血数据(质量反馈)</field>
+            <field name="model_id" ref="model_mqc_blood_qlty"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('units_name', '=', user.company_id.name)]</field>
+        </record>
+        <record id="rule_mqc_blood_manage" model="ir.rule">
+            <field name="name">mqc规则:查看输血数据(输血职能)</field>
+            <field name="model_id" ref="model_mqc_blood_manage"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('units_name', '=', user.company_id.name)]</field>
+        </record>
+        <record id="rule_mqc_blood_advise" model="ir.rule">
+            <field name="name">mqc规则:查看输血数据(建议)</field>
+            <field name="model_id" ref="model_mqc_blood_advise"/>
+            <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('units_name', '=', user.company_id.name)]</field>
+        </record>
+
 
         <record id="rule_mqc_dialysis" model="ir.rule">
             <field name="name">mqc规则:查看血透数据</field>
             <field name="model_id" ref="model_mqc_dialysis"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_drug" model="ir.rule">
@@ -182,7 +219,7 @@
             <field name="model_id" ref="model_mqc_drug"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_icu" model="ir.rule">
@@ -190,7 +227,7 @@
             <field name="model_id" ref="model_mqc_icu"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_index" model="ir.rule">
@@ -198,7 +235,7 @@
             <field name="model_id" ref="model_mqc_index"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_infect" model="ir.rule">
@@ -206,7 +243,7 @@
             <field name="model_id" ref="model_mqc_infect"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_mouth" model="ir.rule">
@@ -214,7 +251,7 @@
             <field name="model_id" ref="model_mqc_mouth"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_narcosis" model="ir.rule">
@@ -222,7 +259,7 @@
             <field name="model_id" ref="model_mqc_narcosis"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
         <record id="rule_mqc_nurse" model="ir.rule">
@@ -230,7 +267,7 @@
             <field name="model_id" ref="model_mqc_nurse"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
          <record id="rule_mqc_pacs" model="ir.rule">
@@ -238,7 +275,7 @@
             <field name="model_id" ref="model_mqc_pacs"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
 
@@ -247,7 +284,7 @@
             <field name="model_id" ref="model_mqc_pathology"/>
             <!--<field name="groups" eval="[(4, ref('group_mqc_merg_user'))]"/>-->
             <field name="global" eval="True"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('mqc_id.company_id', '=', user.company_id.id)]</field>
         </record>
 
     </data>

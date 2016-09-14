@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields
+from openerp import models, fields,api
 
 class Narcosis(models.Model):
     _name = "mqc.narcosis" #dialysis 透析
@@ -138,10 +138,19 @@ class Narcosis(models.Model):
     field105 = fields.Float(u'AICU抗生素占药品费用比')
     field106 = fields.Float(u'麻醉科总收入占医院总收入百分比（%）')
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
+
+    @api.multi
+    def unlink(self):
+        for item in self:
+            item.mqc_id.unlink()
+        return super(Narcosis, self).unlink()
+
+
+
 
 

@@ -92,6 +92,12 @@
             </xpath>
         </template>
 
+		<template id="assets_backend" name="web_keyboard_navigation assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/isoft_base/static/src/js/keyboard_shortcuts.js"></script>
+            </xpath>
+        </template>
+
 
 
         <!--这里注释了，这取决于 website的登陆模块，因为目前没用，所以不需要 -->

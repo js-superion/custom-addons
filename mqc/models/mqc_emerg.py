@@ -4,6 +4,9 @@ from openerp import models, fields, api
 
 class Emergency(models.Model):
     _name = "mqc.emergency"
+    _inherits = {'mqc.mqc': 'mqc_id'}
+    mqc_id = fields.Many2one('mqc.mqc', u'报表id', required=True,
+                             ondelete='cascade')
     _description = u'急诊学科质控指标'
     year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     _rec_name = 'year_month'
@@ -106,7 +109,7 @@ class Emergency(models.Model):
         u'入出院诊断符合数',
     )
     bck_cure_rate = fields.Integer(
-        u'好转率',
+        u'好转率(%)',
     )
     bck_death_case = fields.Integer(
         u'死亡病例数',
@@ -118,7 +121,7 @@ class Emergency(models.Model):
         u'辅助通气人数',
     )
     perfusion_rate = fields.Integer(
-        u'血液灌流率',
+        u'血液灌流率(%)',
     )
     perfusion_within_four = fields.Integer(
         u'血液灌流距中毒时间≤4小时例数',
@@ -174,8 +177,14 @@ class Emergency(models.Model):
         u'CPR未成功病例数',
     )
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+    @api.multi
+    def unlink(self):
+        for emerg in self:
+            emerg.mqc_id.unlink()
+        return super(Emergency, self).unlink()
+
+    # _sql_constraints = [
+    #     ('year_month_uniq',
+    #      'UNIQUE (year_month)',
+    #      u'本月只能上报一次数据')
+    # ]
