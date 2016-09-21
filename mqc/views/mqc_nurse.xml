@@ -14,7 +14,7 @@
             <field name="name">mqc.nurse.form</field>
             <field name="model">mqc.nurse</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="护理数据填报">
@@ -51,7 +51,9 @@
             <field name="model">mqc.nurse</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="mqc_id" />
+                    <field name="year_month" />
+                    <field name="create_uid" />
+                    <field name="create_date" />
                     <field name="nurse_detail" />
                 </tree>
 

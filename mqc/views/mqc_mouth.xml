@@ -14,7 +14,7 @@
             <field name="name">mqc.mouth.form</field>
             <field name="model">mqc.mouth</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="口腔质控报表">
@@ -25,6 +25,7 @@
                                     <field name="device_wash_rate" class="oe_inline"/>
                                     <field name="outp_presc_rate" class="oe_inline"/>
                                     <field name="report_disease" class="oe_inline"/>
+                                    <field name="report_tumor" class="oe_inline"/>
                                 </group>
                             </page>
                         </notebook>

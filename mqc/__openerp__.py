@@ -29,6 +29,7 @@
         'report/mqc_emrg_report_view.xml',
         'report/mqc_blood_report_view.xml',
         'views/mqc_emerg.xml',
+        'views/mqc_child.xml',
         'views/mqc_icu.xml',
         'views/mqc_blood.xml',
         'views/mqc_infect.xml',

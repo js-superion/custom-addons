@@ -14,7 +14,7 @@
             <field name="name">mqc.dialysis.form</field>
             <field name="model">mqc.dialysis</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <group col="2" colspan="2">
                         <field name="dept_doc_num" class="oe_inline" />

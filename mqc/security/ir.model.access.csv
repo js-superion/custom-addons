@@ -31,7 +31,7 @@ access_mqc_blood_manage_react_user,name_mqc_blood_manage_react_user,model_mqc_bl
 
 
 access_mqc_hospital_user,name_mqc_hospital_user,model_mqc_hospital,group_mqc_hospital_user,1,0,0,0
-access_mqc_hospital_admin,name_mqc_hospital_admin,model_mqc_hospital,group_mqc_hospital_admin,1,1,0,0
+access_mqc_hospital_admin,name_mqc_hospital_admin,model_mqc_hospital,group_mqc_hospital_admin,1,1,1,1
 
 
 
@@ -80,6 +80,12 @@ access_mqc_pacs_detail_user,name_mqc_pacs_detail,model_mqc_pacs_detail,group_mqc
 access_mqc_mouth_user,name_mqc_mouth,model_mqc_mouth,group_mqc_mouth_user,1,1,1,0
 access_mqc_mouth_special_disease_user,name_mqc_mouth_special_disease,model_mqc_mouth_special_disease,group_mqc_mouth_user,1,1,1,0
 access_mqc_mouth_parotid_tumor_user,name_mqc_mouth_parotid_tumor,model_mqc_mouth_parotid_tumor,group_mqc_mouth_user,1,1,1,0
+
+access_mqc_child_user,name_mqc_child_user,model_mqc_child,group_mqc_child_user,1,1,1,0
+access_mqc_child_admin,name_mqc_child_admin,model_mqc_child,group_mqc_child_admin,1,1,1,1
+access_mqc_child_detail_user,name_mqc_child_detail_user,model_mqc_child_detail,group_mqc_child_user,1,1,1,0
+access_mqc_child_detail_admin,name_mqc_child_detail_admin,model_mqc_child_detail,group_mqc_child_admin,1,1,1,1
+access_mqc_disease_user,name_mqc_child_disease_user,model_mqc_disease,group_mqc_child_user,1,1,1,0
 
 access_mqc_drug_user,name_mqc_drug_user,model_mqc_drug,group_mqc_drug_user,1,1,1,0
 access_print_template_user,name_print_template,lodop.model_print_template,group_print_template,1,1,1,1

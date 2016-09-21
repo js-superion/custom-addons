@@ -19,6 +19,7 @@
             <menuitem id="act_mqc_blood" name="临床用血" string="用血质控数据" parent="menu_mqc_form" action="action_mqc_blood" groups="group_mqc_blood_user"/>
             <menuitem id="menu_act_mqc_index" name="医疗质量" string="医疗质量数据" parent="menu_mqc_form" action="action_mqc_index" groups="group_mqc_index_user"/>
             <menuitem id="menu_act_mqc_pacs" name="医学影像" string="医学影像质控数据" parent="menu_mqc_form" action="action_mqc_pacs" groups="group_mqc_pacs_user"/>
+            <menuitem id="menu_act_mqc_child" name="儿科" string="儿科质控数据" parent="menu_mqc_form" action="action_mqc_child" groups="group_mqc_child_user"/>
 
         <menuitem id="menu_mqc_rpt" name="图形报表" parent="menu_mqc"/>
             <!-- 二级子菜单 -->

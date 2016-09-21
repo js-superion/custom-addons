@@ -14,7 +14,7 @@
             <field name="name">mqc.blood.form</field>
             <field name="model">mqc.blood</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="输血科建设及检测技术月质控报表">

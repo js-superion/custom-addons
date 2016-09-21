@@ -12,7 +12,7 @@ class Nurse(models.Model):
     year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     _rec_name = 'year_month'
 
-    nurse_detail = fields.One2many('mqc.nurse.detail','nurse_id', u'护理质控明细')
+    nurse_detail = fields.One2many('mqc.nurse.detail','nurse_id', u'护理质控明细',copy=True)
 
     # _sql_constraints = [
     #     ('year_month_uniq',

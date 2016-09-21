@@ -14,7 +14,7 @@
             <field name="name">mqc.narcosis.form</field>
             <field name="model">mqc.narcosis</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="麻醉质控数据填报">

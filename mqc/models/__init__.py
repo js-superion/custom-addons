@@ -14,3 +14,4 @@ import mqc_pacs
 import util
 import mqc_mouth
 import mqc_drug
+import mqc_child

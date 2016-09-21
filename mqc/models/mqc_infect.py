@@ -17,11 +17,11 @@ class Infect(models.Model):
     infect_cases = fields.Integer( u'医院感染例次数',)
     infect_cases_rate = fields.Float( u'医院例次感染率%',)
 
-    part_ids = fields.One2many('mqc.infect.parts', 'infect_id', u'前五位感染部位')
-    hand_ids = fields.One2many('mqc.infect.hand',  'infect_id',u'手卫生监测情况')
-    env_ids = fields.One2many('mqc.infect.env',  'infect_id',u'环境卫生学监测情况')
-    devices_ids = fields.One2many('mqc.infect.devices',  'infect_id',u'器械相关感染监测')
-    rbm_ids = fields.One2many('mqc.infect.rbm',  'infect_id',u'耐药菌监测')
+    part_ids = fields.One2many('mqc.infect.parts', 'infect_id', u'前五位感染部位',copy=True) #copy=true，同时复制明细
+    hand_ids = fields.One2many('mqc.infect.hand',  'infect_id',u'手卫生监测情况',copy=True)
+    env_ids = fields.One2many('mqc.infect.env',  'infect_id',u'环境卫生学监测情况',copy=True)
+    devices_ids = fields.One2many('mqc.infect.devices',  'infect_id',u'器械相关感染监测',copy=True)
+    rbm_ids = fields.One2many('mqc.infect.rbm',  'infect_id',u'耐药菌监测',copy=True)
 
     infect_icu_id = fields.Many2one('mqc.infect.icu', u'ICU医院感染发生情况')
     ssi_id = fields.Many2one('mqc.infect.ssi',u'手术部位感染监测')

@@ -12,7 +12,7 @@ class Pacs(models.Model):
     _rec_name = 'year_month'
     #介入放射指标
     intervene_id = fields.Many2one('mqc.pacs.intervene', u'介入放射', required=True)
-    details = fields.One2many('mqc.pacs.detail', 'pacs_id', u'影像质控明细')
+    details = fields.One2many('mqc.pacs.detail', 'pacs_id', u'影像质控明细',copy=True)
 
     @api.multi
     def unlink(self):

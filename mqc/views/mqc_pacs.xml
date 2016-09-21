@@ -14,7 +14,7 @@
             <field name="name">mqc.pacs.form</field>
             <field name="model">mqc.pacs</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="影像数据填报">

@@ -14,7 +14,7 @@
             <field name="name">mqc.index.form</field>
             <field name="model">mqc.index</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="医疗质量数据填报">

@@ -14,7 +14,7 @@
             <field name="name">mqc.emergency.form</field>
             <field name="model">mqc.emergency</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
 
                         <notebook colspan="4">

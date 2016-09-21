@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from openerp import api
 from openerp import models, fields
 
-class Dialysis(models.Model):
+class Child(models.Model):
     _name = "mqc.child" #child 儿科
     _description = u"儿科质控指标"
     _inherits = {'mqc.mqc': 'mqc_id'}
@@ -9,46 +10,47 @@ class Dialysis(models.Model):
                               ondelete='cascade')
     _rec_name = 'year_month'
     year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
-    mzrs = fields.Integer(u'门诊人数')
-    zyrs = fields.Integer(u'住院人数')
-    pjzyr = fields.Integer(u'平均住院日')
-    avg_charge = fields.Float(u'术前平均住院日')
-    avg_days = fields.Integer(u'门诊病人抗菌素使用率')
-    accord_diag_case = fields.Integer(u'住院病人抗菌素使用率')
-    kidney_exam_case = fields.Integer(u'医院感染发生率')
-    exam_complications = fields.Integer(u'急危重抢救成功率')
-    pressure_control_case = fields.Integer(u'住院病人人均费用')
-    iga_rate = fields.Float(u'门诊病人人均费用')
-    ln_rate = fields.Float(u'药占比(%)') #狼疮性肾炎lupus nephritis
-    out_case1 = fields.Integer(u'抗菌药物DDD强度')
 
-    cured_case = fields.Integer(u'住院患儿数')
-    avg_charge1 = fields.Float(u'病理诊断率')
-    avg_days1 = fields.Integer(u'治疗前诊断率')
-    kidney_exam_case1 = fields.Integer(u'临床路径进入率')
-    exam_complications1 = fields.Integer(u'微创手术率')
-    finish_cp_case = fields.Integer(u'治疗有效率')#cp clinic pathway
-    acpt_dialysis_case = fields.Float(u'手术并发症发生率(%)')
-    out_case2 = fields.Integer(u'不良反应评估率')
-    avg_charge2 = fields.Float(u'复发率')
-    avg_days2 = fields.Integer(u'平均住院费用')
+    #一般信息
+    mzrs = fields.Float(u'门诊人数')
+    jzrs = fields.Float(u'急诊人数')
+    jzwzbqjs = fields.Float(u'急诊危重病抢救数')
+    jztjrys = fields.Float(u'急诊途径入院数')
+    myzzyrs = fields.Float(u'每月总住院人数')
+    zybrlcljzls = fields.Float(u'住院病人临床路径种类数')
+    lcljrjs = fields.Float(u'临床路径入径数')
+    lcljrjl = fields.Float(u'临床路径入径率(%)')
+    child_ids = fields.One2many('mqc.child.detail', 'child_id', u'病种信息',copy=True)
 
-    cured_case = fields.Integer(u'住院患儿数')
-    avg_charge1 = fields.Float(u'门诊空灌整复率')
-    avg_days1 = fields.Integer(u'治疗前诊断率')
-    kidney_exam_case1 = fields.Integer(u'临床路径进入率')
-    exam_complications1 = fields.Integer(u'治疗有效率')
-    finish_cp_case = fields.Integer(u'肠管坏死率')  # cp clinic pathway
-    acpt_dialysis_case = fields.Float(u'手术并发症发生率(%)')
-    out_case2 = fields.Integer(u'不良反应评估率')
-    avg_charge2 = fields.Float(u'死亡率')
-    avg_days2 = fields.Integer(u'平均住院费用')
+    @api.multi
+    def unlink(self):
+        for child in self:
+            child.mqc_id.unlink()
+        return super(Child, self).unlink()
 
 
 
-    _sql_constraints = [
-        ('year_month_uniq',
-         'UNIQUE (year_month)',
-         u'本月只能上报一次数据')
-    ]
+#相关字典
+class Disease(models.Model):
+    _name = "mqc.disease"
+    _description = u"病种字典"
+    name = fields.Char(u'病种名',)
+
+
+
+class ChildDetail(models.Model):
+    _name = "mqc.child.detail"  # child 儿科
+    _description = u"儿科质控明细"
+    # 一般信息
+    child_id = fields.Many2one('mqc.child', u'儿科主记录', required=True,)
+    disease_name = fields.Many2one('mqc.disease',u'病种名称',required=True,)
+    outp_case = fields.Float(u'门诊病人数')
+    adm_case = fields.Float(u'住院病人数')
+    zqgfyrs = fields.Float(u'支气管肺炎人数')
+    zytfyrs = fields.Float(u'支原体肺炎人数')
+    cure_rate = fields.Float(u'治愈好转率(%)')
+    cbl = fields.Float(u'传报率(%)')
+    out_hos_avg_days = fields.Float(u'出院者平均住院天数')
+    out_hos_avg_cost = fields.Float(u'出院者平均住院费用')
+
 

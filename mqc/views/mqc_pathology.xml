@@ -14,7 +14,7 @@
             <field name="name">mqc.pathology.form</field>
             <field name="model">mqc.pathology</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                             <page string="病理数据填报">

@@ -170,7 +170,7 @@ class BloodConstruct(models.Model):
     bed_num = fields.Integer( u'医院床位数',)
     required_device  = fields.Selection([('01', u'齐全'), ('02', u'不齐全')], u'科室必需设备')
     shortage_device = fields.Char(u'缺少的设备名称',)
-    detail_ids = fields.One2many('mqc.blood.construct.detail', 'construct_id', u'技术明细')
+    detail_ids = fields.One2many('mqc.blood.construct.detail', 'construct_id', u'技术明细',copy=True)
 
 #表3 血液成分质量反馈月报表
 class BloodQuality(models.Model):
@@ -185,7 +185,7 @@ class BloodQuality(models.Model):
     dept_name = fields.Char(u'上报科室',
                             default=lambda self: self.env.user.employee_ids.department_id.name, )
 
-    detail_ids = fields.One2many('mqc.blood.qlty.detail', 'qlty_id', u'质量明细') #关联明细
+    detail_ids = fields.One2many('mqc.blood.qlty.detail', 'qlty_id', u'质量明细',copy=True) #关联明细
 
     @api.multi
     @api.depends('year_month', 'units_name')
@@ -226,8 +226,8 @@ class BloodManage(models.Model):
                              default=lambda self: self.env.user.company_id.units_code,)
     dept_name = fields.Char(u'上报科室',
                             default=lambda self: self.env.user.employee_ids.department_id.name, )
-    detail_ids = fields.One2many('mqc.blood.manage.detail', 'manage_id', u'项目明细') #关联明细
-    react_ids = fields.One2many('mqc.blood.manage.react', 'manage_id', u'不良反应报告') #关联明细
+    detail_ids = fields.One2many('mqc.blood.manage.detail', 'manage_id', u'项目明细',copy=True) #关联明细
+    react_ids = fields.One2many('mqc.blood.manage.react', 'manage_id', u'不良反应报告',copy=True) #关联明细
 
     @api.multi
     @api.depends('year_month', 'units_name')

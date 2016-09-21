@@ -14,7 +14,7 @@
             <field name="name">mqc.icu.form</field>
             <field name="model">mqc.icu</field>
             <field name="arch" type="xml">
-                <form>
+                <form copy="false" create="false" edit="true">
                     <sheet>
                         <notebook colspan="1">
                              <page string="指标填写">
