@@ -26,6 +26,12 @@ $RECYCLE.BIN/
 dist/
 build/
 material_backend_theme_v9/
+base_export_manager/
+base_technical_features/
+pentaho/
+web_export_view/
+material_backend_theme_v9/
+web_restrict_export/
 eggs/
 parts/
 var/

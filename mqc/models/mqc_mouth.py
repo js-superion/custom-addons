@@ -33,6 +33,8 @@ class MouthSpecial(models.Model):
     _name = "mqc.mouth.special.disease"
     _description = u'专科病种信息'
 
+    _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     # 专科病种信息
     rcc_acpt_rate = fields.Integer(u'根管治疗合格率(%)', )  # root canal recurrence
     use_blood_case = fields.Integer(u'乳牙根管治疗合格率(%)', )
@@ -57,6 +59,8 @@ class MouthTumor(models.Model):
     _name = "mqc.mouth.parotid.tumor"
     _description = u'腮腺肿瘤'
 
+    _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     cybr_case = fields.Float(u'出院病人数', )
     xzlqqcs_rate = fields.Float(u'行肿瘤全切除术例数', )
     sqpjzyr = fields.Float(u'术前平均住院日', )

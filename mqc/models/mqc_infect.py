@@ -141,7 +141,8 @@ class InfectRbm(models.Model):
 class InfectIll(models.Model):
     _name = "mqc.infect.ill" #ill rate 现患率
     _description = u"现患率调查"
-
+    _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     std_num = fields.Integer(u'应查人数', )
     fct_num = fields.Integer(u'实查人数')
     fct_rate = fields.Float(u'实查率%',)
@@ -153,7 +154,8 @@ class InfectIll(models.Model):
 class InfectBreak(models.Model):
     _name = "mqc.infect.break" #ill rate 现患率
     _description = u"医院感染暴发情况"
-
+    _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     std_num = fields.Integer(u'出院人次', )
     fct_num = fields.Integer(u'确认医院感染暴发次数')
     fct_rate = fields.Integer(u'医院感染暴发部位',)
@@ -163,7 +165,8 @@ class InfectBreak(models.Model):
 class InfectEdu(models.Model):
     _name = "mqc.infect.edu" #ill rate 现患率
     _description = u"继续教育情况"
-
+    _rec_name = 'year_month'
+    year_month = fields.Char(u'年月', default=lambda self: self.env['utils'].get_zero_time().strftime('%Y-%m'))
     country_pro = fields.Integer(u'专职人员(国家)', )
     country_other = fields.Integer(u'其它(国家)')
     province_pro = fields.Integer(u'专职人员(省)',)

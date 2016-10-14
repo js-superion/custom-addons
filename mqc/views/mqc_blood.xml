@@ -49,7 +49,7 @@
                         </notebook>
                         <div>
                             <!--<printbutton htmlfrom="client"  string="打印" type="object" name="print" model="mqc.blood.clinic"  class="btn-primary"/>-->
-                            <expbutton exp_id="blood_clinic_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>
+                            <!--<expbutton exp_id="blood_clinic_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>-->
                         </div>
                     </sheet>
                 </form>
@@ -100,7 +100,7 @@
                         </notebook>
                          <div>
                             <!--<printbutton htmlfrom="client"  string="打印" type="object" name="print"   class="btn-primary"/>-->
-                            <expbutton exp_id="blood_cons_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>
+                            <!--<expbutton exp_id="blood_cons_form"  exp_type="doc" string="导出" type="object" name="export"  model="mqc.blood.clinic"  class="btn-primary"/>-->
                         </div>
                     </sheet>
                 </form>

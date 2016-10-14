@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <data noupdate="0">
         <!-- 主菜单 -->
         <!--groups="group_mqc_merg_user,group_mqc_merg_admin,group_mqc_blood_user,group_mqc_blood_admin,group_mqc_hospital_user,group_mqc_hospital_admin,group_mqc_user_user,group_mqc_user_admin" -->
         <menuitem id="menu_mqc" name="医疗质控管理"/>
@@ -21,19 +21,19 @@
             <menuitem id="menu_act_mqc_pacs" name="医学影像" string="医学影像质控数据" parent="menu_mqc_form" action="action_mqc_pacs" groups="group_mqc_pacs_user"/>
             <menuitem id="menu_act_mqc_child" name="儿科" string="儿科质控数据" parent="menu_mqc_form" action="action_mqc_child" groups="group_mqc_child_user"/>
 
-        <menuitem id="menu_mqc_rpt" name="图形报表" parent="menu_mqc"/>
+        <!--<menuitem id="menu_mqc_rpt" name="图形报表" parent="menu_mqc"/>-->
             <!-- 二级子菜单 -->
-            <menuitem id="menu_mqc_rpt_emrg" name="急诊" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_emerg_user"/>
-            <menuitem id="menu_mqc_rpt_pathology" name="病理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
-            <menuitem id="menu_mqc_rpt_icu" name="ICU" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
-            <menuitem id="menu_mqc_rpt_nursing" name="护理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
-            <menuitem id="menu_mqc_rpt_mouth" name="口腔" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
-            <menuitem id="menu_mqc_rpt_anesthesiology" name="麻醉" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>
-            <menuitem id="menu_mqc_rpt_blood_clinic" name="全院临床用血" string="全院临床用血" parent="menu_mqc_rpt" action="action_mqc_blood_clinic_report" groups="group_mqc_blood_user"/>
-            <menuitem id="menu_mqc_rpt_blood_construct" name="输血科建设及检测技术" string="输血科建设及检测技术" parent="menu_mqc_rpt" action="action_mqc_blood_construct_report" groups="group_mqc_blood_user"/>
-            <menuitem id="menu_mqc_rpt_blood_qlty" name="血液成分质量" string="血液成分质量" parent="menu_mqc_rpt" action="action_mqc_blood_qlty_report" groups="group_mqc_blood_user"/>
-            <menuitem id="menu_mqc_rpt_blood_manage" name="输血职能管理" string="输血职能管理" parent="menu_mqc_rpt" action="action_mqc_blood_manage_report" groups="group_mqc_blood_user"/>
-            <menuitem id="menu_mqc_rpt_blood_advise" name="用血质量安全" string="用血质量安全" parent="menu_mqc_rpt" action="action_mqc_blood_advise_report" groups="group_mqc_blood_user"/>
+            <!--<menuitem id="menu_mqc_rpt_emrg" name="急诊" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_emerg_user"/>-->
+            <!--<menuitem id="menu_mqc_rpt_pathology" name="病理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>-->
+            <!--<menuitem id="menu_mqc_rpt_icu" name="ICU" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>-->
+            <!--<menuitem id="menu_mqc_rpt_nursing" name="护理" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>-->
+            <!--<menuitem id="menu_mqc_rpt_mouth" name="口腔" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>-->
+            <!--<menuitem id="menu_mqc_rpt_anesthesiology" name="麻醉" string="急诊质控图形报表" parent="menu_mqc_rpt" action="action_mqc_emrg_report" groups="group_mqc_admin"/>-->
+            <!--<menuitem id="menu_mqc_rpt_blood_clinic" name="全院临床用血" string="全院临床用血" parent="menu_mqc_rpt" action="action_mqc_blood_clinic_report" groups="group_mqc_blood_user"/>-->
+            <!--<menuitem id="menu_mqc_rpt_blood_construct" name="输血科建设及检测技术" string="输血科建设及检测技术" parent="menu_mqc_rpt" action="action_mqc_blood_construct_report" groups="group_mqc_blood_user"/>-->
+            <!--<menuitem id="menu_mqc_rpt_blood_qlty" name="血液成分质量" string="血液成分质量" parent="menu_mqc_rpt" action="action_mqc_blood_qlty_report" groups="group_mqc_blood_user"/>-->
+            <!--<menuitem id="menu_mqc_rpt_blood_manage" name="输血职能管理" string="输血职能管理" parent="menu_mqc_rpt" action="action_mqc_blood_manage_report" groups="group_mqc_blood_user"/>-->
+            <!--<menuitem id="menu_mqc_rpt_blood_advise" name="用血质量安全" string="用血质量安全" parent="menu_mqc_rpt" action="action_mqc_blood_advise_report" groups="group_mqc_blood_user"/>-->
 
          <menuitem id="menu_mqc_cfg" name="配置信息" parent="menu_mqc"/>
             <!-- 二级子菜单 -->
